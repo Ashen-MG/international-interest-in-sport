@@ -1,0 +1,34 @@
+Get success data.
+---
+parameters:
+  - name: countryCode
+    in: path
+    type: string
+responses:
+  200:
+    description: Success data.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        data:
+          type: "object"
+          properties:
+            success:
+              type: array
+              items:
+                type: "object"
+                properties:
+                  sport_name:
+                    type: string
+                  points:
+                    type: integer
+                  order:
+                    type: integer
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

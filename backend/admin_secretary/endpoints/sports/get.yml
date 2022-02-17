@@ -1,0 +1,27 @@
+Get all sports. (admin or secretary authetication is required)
+---
+security:
+  - Bearer: []
+responses:
+  200:
+    description: Sports.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        sports:
+          type: array
+          items:
+            type: "object"
+            properties:
+              title:
+                type: string
+              code:
+                type: integer
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

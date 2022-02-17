@@ -1,0 +1,4 @@
+# include here all globally ignored files
+
+.idea
+__pycache__

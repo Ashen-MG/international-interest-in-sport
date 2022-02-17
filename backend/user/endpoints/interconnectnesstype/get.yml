@@ -1,0 +1,32 @@
+Get interconnectedness types.
+---
+parameters:
+  - name: countryCode
+    in: path
+    type: string
+responses:
+  200:
+    description: Interconnectedness types.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        data:
+          type: "object"
+          properties:
+            interconnectednesstype:
+              type: array
+              items:
+                type: "object"
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

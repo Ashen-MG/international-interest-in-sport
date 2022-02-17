@@ -1,0 +1,26 @@
+Add new country. (admin protected route)
+---
+parameters:
+  - name: body
+    in: body
+    type: object
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+        translation:
+          type: string
+        code:
+          type: string
+security:
+  - Bearer: []
+responses:
+  200:
+    description: New country has been successfully added.
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

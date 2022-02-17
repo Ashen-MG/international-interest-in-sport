@@ -1,0 +1,26 @@
+Update an existing sport. (admin protected route)
+---
+parameters:
+  - name: body
+    in: body
+    type: object
+    schema:
+      type: object
+      properties:
+        oldCode:
+          type: string
+        newCode:
+          type: string
+        newTitle:
+          type: string
+security:
+  - Bearer: []
+responses:
+  200:
+    description: The sport has been successfully updated.
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

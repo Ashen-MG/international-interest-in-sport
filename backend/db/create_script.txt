@@ -1,0 +1,160 @@
+DROP TABLE IF EXISTS sport CASCADE;
+
+CREATE TABLE sport
+  (
+     id                SERIAL PRIMARY KEY,
+     code              INTEGER UNIQUE,
+     title             VARCHAR
+  );
+
+
+DROP TABLE IF EXISTS country CASCADE;
+
+CREATE TABLE country
+  (
+     id                SERIAL PRIMARY KEY,
+     name              VARCHAR,
+     is_active         BOOLEAN NOT NULL,
+     translation       VARCHAR,
+     code              VARCHAR(3) UNIQUE NOT NULL
+  );
+
+
+DROP TABLE IF EXISTS branch CASCADE;
+
+CREATE TABLE branch
+  (
+     id                SERIAL PRIMARY KEY,
+     code              INTEGER,
+     title             VARCHAR,
+     is_combined       BOOLEAN,
+     sport_id          INTEGER REFERENCES sport(id),
+     country_id        INTEGER REFERENCES country(id),
+     UNIQUE (code, sport_id),
+     CHECK ((country_id IS NULL) != (sport_id IS NULL)),
+     CHECK ((is_combined = FALSE) != (sport_id IS NULL)),
+     CHECK ((is_combined = TRUE) != (country_id IS NULL))
+  );
+
+
+DROP TABLE IF EXISTS combi_branch CASCADE;
+
+CREATE TABLE combi_branch
+  (
+     id                SERIAL PRIMARY KEY,
+     combi_branch_id   INTEGER REFERENCES branch(id),
+     subbranch_id      INTEGER REFERENCES branch(id),
+     coefficient       FLOAT
+  );
+
+
+DROP TABLE IF EXISTS success CASCADE;
+
+CREATE TABLE success
+  (
+     id                SERIAL PRIMARY KEY,
+     country_id        INTEGER REFERENCES country(id),
+     sport_id          INTEGER REFERENCES sport(id),
+     points            FLOAT,
+     orders	           FLOAT
+  );
+
+
+DROP TABLE IF EXISTS parameter CASCADE;
+
+CREATE TABLE parameter
+  (
+     id                SERIAL PRIMARY KEY,
+     code              INTEGER UNIQUE,
+     title             VARCHAR,
+     value             FLOAT
+  );
+
+
+DROP TABLE IF EXISTS interconnectness_type CASCADE;
+
+CREATE TABLE interconnectness_type
+  (
+     id                SERIAL PRIMARY KEY,
+     code              INTEGER UNIQUE,
+     title             VARCHAR
+  );
+
+
+
+DROP TABLE IF EXISTS interconnectness CASCADE;
+
+CREATE TABLE interconnectness
+  (
+     type_id           INTEGER REFERENCES interconnectness_type(id),
+     country_one_id    INTEGER REFERENCES country(id),
+     country_two_id    INTEGER REFERENCES country(id),
+     value             FLOAT,
+     CHECK ( country_one_id != country_two_id )
+
+  );
+
+
+DROP TABLE IF EXISTS funding CASCADE;
+
+CREATE TABLE funding
+  (
+     id                SERIAL PRIMARY KEY,
+     country_id        INTEGER REFERENCES country(id),
+     branch_id         INTEGER REFERENCES branch(id),
+     absolute_funding  FLOAT,
+     currency          VARCHAR,
+     CHECK ( absolute_funding > 0 )
+  );
+
+DROP TABLE IF EXISTS users CASCADE;
+
+CREATE TABLE users
+  (
+     id                SERIAL PRIMARY KEY,
+     email             VARCHAR UNIQUE,
+     password          VARCHAR(320),
+     type              VARCHAR CHECK (type = 'admin' or type = 'secretary')
+  );
+
+ DROP TABLE IF EXISTS BGS CASCADE;
+
+CREATE TABLE BGS
+  (
+     id                SERIAL PRIMARY KEY,
+     sport_id          INTEGER REFERENCES sport(id) UNIQUE,
+     VALUE             INTEGER
+  );
+
+DROP TABLE IF EXISTS NUM_IN_SPORT CASCADE;
+CREATE TABLE NUM_IN_SPORT
+  (
+     sport_id          INTEGER UNIQUE REFERENCES sport(id),
+     num_countries     INTEGER
+  );
+
+
+DROP TABLE IF EXISTS MAX_POINTS_IN_SPORT CASCADE;
+CREATE TABLE MAX_POINTS_IN_SPORT
+  (
+     sport_id          INTEGER UNIQUE REFERENCES sport(id),
+     points            FLOAT
+  );
+
+
+DROP TABLE IF EXISTS TOTAL_COUNTRY_POINTS CASCADE;
+CREATE TABLE TOTAL_COUNTRY_POINTS
+  (
+     country_id         INTEGER UNIQUE REFERENCES country(id),
+     points             FLOAT
+  );
+
+DROP TABLE IF EXISTS COUNTRY_BEST_ORDER CASCADE;
+CREATE TABLE COUNTRY_BEST_ORDER
+  (
+     country_id         INTEGER UNIQUE REFERENCES country(id),
+     best               FLOAT
+  );
+
+
+

@@ -1,0 +1,34 @@
+Get funding data.
+---
+parameters:
+  - name: countryCode
+    in: path
+    type: string
+responses:
+  200:
+    description: Funding data.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        data:
+          type: "object"
+          properties:
+            funding:
+              type: array
+              items:
+                type: "object"
+                properties:
+                  branch_id:
+                    type: integer
+                  absolute_funding:
+                    type: integer
+                  currency:
+                    type: string
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

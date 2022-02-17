@@ -1,0 +1,38 @@
+Add new combined branch. (admin or secretary authetication is required)
+---
+parameters:
+  - name: body
+    in: body
+    type: object
+    schema:
+      type: object
+      properties:
+        branchCode:
+          type: string
+        branchTitle:
+          type: string
+        countryCode:
+          type: string
+        subBranches:
+          type: array
+          items:
+            type: "object"
+            properties:
+              sportCode:
+                type: string
+              branchCode:
+                type: string
+              coefficient:
+                type: integer
+
+security:
+  - Bearer: []
+responses:
+  200:
+    description: New combined branch has been successfully added.
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

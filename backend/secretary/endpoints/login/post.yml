@@ -1,0 +1,33 @@
+Secretary login.
+---
+parameters:
+  - name: body
+    in: body
+    type: object
+    description: Parameters `email` and `password` are **required**.
+    schema:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+responses:
+  200:
+    description: User's access token.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            accessToken:
+              type: string
+  400:
+    description: Missing JSON header, missing required parameter or invalid parameter's value.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

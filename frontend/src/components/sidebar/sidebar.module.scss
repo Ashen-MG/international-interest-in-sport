@@ -1,0 +1,26 @@
+@use "../../styles/global.module";
+
+.sidebar {
+  width: global.$sidebarWidth;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+
+  a, hr, span, h2 {
+    color: white;
+  }
+
+  .sidebarHeader {
+    font-size: 1.5em;
+  }
+
+  .sidebarItem {
+    margin: 5px 0 5px 0;
+  }
+
+  .sidebarLink {
+    &:hover, &:focus, &:active {
+      color: #07cdff;
+    }
+  }
+}

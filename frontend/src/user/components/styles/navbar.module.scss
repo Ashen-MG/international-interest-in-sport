@@ -1,0 +1,26 @@
+.mainNavbar {
+  background-color: rgb(33,37,41);
+  padding: 20px 10px 20px 100px;
+
+  a {
+    color: white !important;
+    font-size: x-large;
+    text-decoration: none;
+  }
+
+  .navItem {
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+.mainNavbar a:hover {
+  background-color: #62b8ff;
+}
+
+.mainNavbar a:active {
+  background-color: #0092ff;
+}
+
+.active a {
+  background-color: #0092ff;
+}

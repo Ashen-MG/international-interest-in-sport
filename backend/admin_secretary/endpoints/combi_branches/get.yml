@@ -1,0 +1,37 @@
+Get all combined branches. (admin or secretary authetication is required)
+---
+security:
+  - Bearer: []
+responses:
+  200:
+    description: Combined branches.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        combiBranches:
+          type: array
+          items:
+            type: "object"
+            properties:
+              countryCode:
+                type: string
+              countryName:
+                type: string
+              combiCode:
+                type: integer
+              combiTitle:
+                type: string
+              subCode:
+                type: integer
+              subTitle:
+                type: string
+              coefficient:
+                type: integer
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

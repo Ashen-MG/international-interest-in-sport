@@ -1,0 +1,31 @@
+Get all branches with their sports.
+---
+security:
+  - Bearer: []
+responses:
+  200:
+    description: Branches with their sports.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        branchesWithSports:
+          type: array
+          items:
+            type: "object"
+            properties:
+              sportCode:
+                type: integer
+              sportTitle:
+                type: string
+              branchCode:
+                type: integer
+              branchTitle:
+                type: string
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

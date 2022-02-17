@@ -1,0 +1,36 @@
+Add new branch.
+---
+parameters:
+  - name: body
+    in: body
+    type: object
+    schema:
+      type: object
+      properties:
+        sportCode:
+          type: string
+        branchCode:
+          type: string
+        branchTitle:
+          type: string
+security:
+  - Bearer: []
+responses:
+  200:
+    description: New branch has been successfully added.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            accessToken:
+              type: string
+  400:
+    description: Missing JSON header, missing required parameter or invalid value of some parameter.
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

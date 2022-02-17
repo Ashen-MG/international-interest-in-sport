@@ -1,0 +1,73 @@
+Upload relevant files. (admin protected route)
+---
+summary: Upload files.
+consumes:
+ - multipart/form-data
+parameters:
+ - in: formData
+   name: fundingFile
+   type: file
+   description: A funding file to upload.
+ - in: formData
+   name: successFile
+   type: file
+   description: A success file to upload.
+ - in: formData
+   name: interconnectednessFile
+   type: file
+   description: A interconnectedness file to upload.
+ - in: body
+   name: json
+   type: object
+   description: Serialized json object in the formData. Following parameters are required if `fundingFile` has been uploaded.
+   schema:
+     type: object
+     properties:
+       countryCode:
+         type: string
+       currency:
+         type: string
+       interconnectednessType:
+         type: number
+security:
+  - Bearer: []
+responses:
+  200:
+    description: The uploaded files have been successfully parsed.
+  400:
+    description: Missing required parameter, invalid value of some parameter or error while parsing the uploaded files.
+    schema:
+      type: "object"
+      properties:
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+            suggestions:
+              type: array
+              items:
+                type: "object"
+                properties:
+                  sportCode:
+                    type: string
+                  oldBranchCode:
+                    type: string
+                  oldSportTitle:
+                    type: string
+                  oldBranchTitle:
+                    type: string
+                  newBranchCode:
+                    type: string
+                  newSportTitle:
+                    type: string
+                  newBranchTitle:
+                    type: string
+                  type:
+                    type: string
+  401:
+    description: Authorization error.
+  500:
+    description: Internal server error or database error.

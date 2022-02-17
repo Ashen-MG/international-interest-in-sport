@@ -1,0 +1,2396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>__init__ API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>data-computation</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from typing import List, Dict, Any
+
+from settings import DB
+
+
+class CompError(Exception):
+    ...
+
+
+class Computations:
+
+    def __init__(self):
+        &#34;&#34;&#34; Set constants PV, initialize DB mirroring. &#34;&#34;&#34;
+
+        self.PV1 = 0.5
+        self.PV2 = 0.16
+        self.PV3 = 0.34
+        self.PV4 = 2
+
+        # small db mirroring model will be initialize here
+        #  local info from db which are frequently used in computations are stored in lists, maps
+        self.BGS_data = DB.getBGS()
+        self.order_data = DB.getOrder()
+        self.points_data = DB.getPoints()
+        self.max_points_data = DB.getMaxPoints()
+        self.num_countries_in_sport_data = DB.getNumCountriesInSport()
+        self.total_country_points_data = DB.getTotalCountryPoints()
+        self.min_order_data = DB.getMinOrder()
+        self.econ_interconnectness_data = DB.getEconIntercon()
+        self.nonecon_interconnectness_data = DB.getNonEconIntercon()
+        self.noncombi_funding_data = DB.getNonCombiBranchFunding()
+        self.combi_funding = DB.getCombiFunding()
+
+        self.country_data = DB.getActiveCountryIds()
+        self.sport_data = DB.getSportIds()
+        self.noncombi_branch_data = DB.getNonCombiBranchIds()
+
+        self.noncombi_branch_with_sport_data = DB.getNonCombiWithSportBranchIds()
+
+        # zrkadlenie na urychlenie vypoctov
+        self.total_BGS_data = None
+        self.total_country_fund_data = {}
+        self.total_success_of_country_data = {}
+
+    def allActiveCountryIds(self) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse country data from DB mirroring and returns list of active country ids.
+
+        Returns:
+            List[int]:
+        &#34;&#34;&#34;
+
+        res = []
+
+        for record in self.country_data:
+            res.append(record[&#34;id&#34;])
+
+        return res
+
+    def allBranchIds(self) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse non combi branch data from DB mirroring and returns list of non combi branch of ids.
+
+        Returns:
+            List[int]: list of branch ids
+        &#34;&#34;&#34;
+
+        res = []
+
+        for item in self.noncombi_branch_data:
+            res.append(item[&#34;id&#34;])
+
+        return res
+
+    def allBranchInSportIds(self, sportN: id) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse non combi branch data which belongs to selected sport
+        from DB mirroring and returns list of non combi branch of ids.
+
+        Args:
+            sportN (id): selected sport id
+
+        Returns:
+            List[int]: list of branch ids
+        &#34;&#34;&#34;
+        res = []
+
+        try:
+            for item in self.noncombi_branch_with_sport_data[sportN]:
+                res.append(item)
+        except KeyError:
+            ...
+
+        return res
+
+    def allSportIds(self) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse sport data from DB mirroring and returns list of sport ids.
+
+        Returns:
+            List[int]: list of sport ids
+        &#34;&#34;&#34;
+        res = []
+
+        for record in self.sport_data:
+            res.append(record[&#34;id&#34;])
+
+        return res
+
+    def allSportImportance(self, countryK: id) -&gt; Dict[int, float]:
+        &#34;&#34;&#34; Calutale importance of each sport in selected country.
+
+        Args:
+            countryK (id): sleected country id
+
+        Returns:
+            Dict[int, float]: dict which keys are sport ids and values are importance numbers.
+        &#34;&#34;&#34;
+        res = {}
+        for sport in self.allSportIds():
+            res[sport] = self.importance(countryK, sport)
+
+        return res
+
+    def importance(self, countryK: id, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Calculate importtance for selected sport in selected country.
+
+        Args:
+            countryK (id): selected country id
+            sportN (id): selected sport id
+
+        Returns:
+            float: importance of sport in country
+        &#34;&#34;&#34;
+        suma = 0
+        for countryJ in self.allActiveCountryIds():
+            if countryK != countryJ:
+                suma += self.sport_importance_in_country(sportN, countryJ) * self.norm_interconnectness(countryK,
+                                                                                                        countryJ)
+
+        return self.PV3 * self.norm_BGS(sportN) + (1 - self.PV3) * suma
+
+    def norm_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed interconnectness between selected countries.
+
+        Args:
+            countryK (id): country one id
+            countryJ (id): country two id
+
+        Raises:
+            CompError: countries cant be the same
+
+        Returns:
+            float: normed interconnectness between country one and two
+        &#34;&#34;&#34;
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute norm interconectness for same countries&#34;)
+
+        return self.total_interconnectness(countryK, countryJ) * (1 - self.econ_interconnectness(countryK, countryJ))
+
+    def total_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Calculate total interconnectness between selected countries.
+
+        Args:
+            countryK (id): country one id
+            countryJ (id): country two id
+
+        Raises:
+            CompError: countries cant be the same
+
+        Returns:
+            float: total interconnectness between one and two
+        &#34;&#34;&#34;
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute total interconectness for same countries&#34;)
+
+        return (self.econ_interconnectness(countryK, countryJ) + self.nonecon_interconnectness(countryK, countryJ)) / 2
+
+    def econ_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Returns economic interconnectness between selected countries from DB mirroring.
+
+        Args:
+            countryK (id): country one id
+            countryJ (id): country two id
+
+        Raises:
+            CompError: countries cant be the same
+
+        Returns:
+            float: economic interconnectness between one and two
+        &#34;&#34;&#34;
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute econ interconectness for same countries&#34;)
+
+        try:
+            return self.econ_interconnectness_data[countryK][countryJ]
+        except KeyError:
+            return 0
+
+    def nonecon_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Returns non-economic interconnectness between selected countries from DB mirroring.
+
+                Args:
+                    countryK (id): country one id
+                    countryJ (id): country two id
+
+                Raises:
+                    CompError: countries cant be the same
+
+                Returns:
+                    float: non-economic interconnectness between one and two
+                &#34;&#34;&#34;
+
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute nonecon interconectness for same countries&#34;)
+
+        try:
+            return self.nonecon_interconnectness_data[countryK][countryJ]
+        except KeyError:
+            return 0
+
+    def sport_importance_in_country(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate importance of selected sport in selected country.
+
+        Args:
+            sportN (id): selected sport id
+            countryK (id): selected country id
+
+        Returns:
+            float: importance of sport
+        &#34;&#34;&#34;
+        normFun = self.norm_funding(sportN, countryK)
+        normSuc = self.norm_success(sportN, countryK)
+
+        if normFun &gt; 0:
+            return (self.PV1 * normFun + self.PV2 * normSuc) / (self.PV1 + self.PV2)
+        else:
+            return normSuc
+
+    def norm_funding(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed funding of selected sport in selected country.
+
+        Args:
+            sportN (id): selected sport
+            countryK (id): selected country
+
+        Returns:
+            float: normed funding
+        &#34;&#34;&#34;
+        if self.total_country_funding(countryK) == 0:
+            return 0
+
+        suma = 0
+
+        for branchB in self.allBranchInSportIds(sportN):
+            suma += self.total_branch_funding(countryK, sportN, branchB) / self.total_country_funding(countryK)
+
+        return suma
+
+    def total_branch_funding(self, countryK, sportN, branchB) -&gt; float:
+        &#34;&#34;&#34; Calculate total branch funding = direct funding + funding from combi branches.
+
+        Args:
+            countryK ([type]): selected country id
+            sportN ([type]): selected sport id
+            branchB ([type]): selected branch id
+        Returns:
+            float: [description]
+        &#34;&#34;&#34;
+        res = self.branch_funding(countryK, sportN, branchB)
+
+        try:
+            data = self.combi_funding[countryK][branchB].items()
+        except KeyError:
+            data = []
+
+        for combi, fund in data:
+            res += fund
+
+        return res
+
+    def branch_funding(self, countryK: id, sportN: id, branchB: id) -&gt; float:
+        &#34;&#34;&#34; Get non combi branch funding from DB mirror.
+
+        Args:
+            countryK ([type]): selected country id
+            sportN ([type]): selected sport id
+            branchB ([type]): selected branch id
+
+        Returns:
+            float: non combi branch funding = direct funding
+        &#34;&#34;&#34;
+        try:
+            return self.noncombi_funding_data[countryK][sportN][branchB]
+        except KeyError:
+            return 0
+
+    def total_country_funding(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Sum of all fundings in selected country.
+
+        Args:
+            countryK (id):selected country id
+
+        Returns:
+            float: total funding of country
+        &#34;&#34;&#34;
+
+        if countryK in self.total_country_fund_data:
+            return self.total_country_fund_data[countryK]
+        else:
+            suma = 0
+
+            for sportN in self.allSportIds():
+                for branchB in self.allBranchInSportIds(sportN):
+                    tmp = self.total_branch_funding(countryK, sportN, branchB)
+                    suma += tmp
+
+            self.total_country_fund_data[countryK] = suma
+            return suma
+
+    def norm_success(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed success of selected sport in selected country.
+
+        Args:
+            sportN (id): selected sport
+            countryK (id): selected country
+
+        Returns:
+            float: normed success
+        &#34;&#34;&#34;
+        if self.total_success(countryK) == 0:
+            return 0
+
+        return self.success(sportN, countryK) / self.total_success(countryK)
+
+    def total_success(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate sum of successes in each sport in selected country.
+
+        Args:
+            countryK (id): selected country
+
+        Returns:
+            float: total success
+        &#34;&#34;&#34;
+        if countryK in self.total_success_of_country_data:
+            return self.total_success_of_country_data[countryK]
+        else:
+            suma = 0
+
+            for sportN in self.allSportIds():
+                suma += self.success(sportN, countryK)
+
+            self.total_success_of_country_data[countryK] = suma
+            return suma
+
+    def success(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate success of selected sport in selected country using order, points, total pointsm
+        min order, max points.
+
+        Args:
+            sportN (id): selected sport id
+            countryK (id): selected country id
+
+        Returns:
+            float: [description]
+        &#34;&#34;&#34;
+        res = 0
+
+        order = self.order(countryK, sportN)
+        if order &gt; 0:
+            res += (1 / 4) * ((self.num_countries_in_sport(sportN) + 1 - order) / self.num_countries_in_sport(sportN))
+
+        points = self.points(countryK, sportN)
+        if points &gt; 0:
+            res += (1 / 4) * (points / self.max_points(sportN))
+
+        totalPoints = self.total_points(countryK)
+        if totalPoints &gt; 0:
+            res += (1 / 4) * ((self.points(countryK, sportN) ** self.PV4) / (totalPoints ** self.PV4))
+
+        if order &gt; 0:
+            res += (1 / 4) * (self.min_order(countryK) / order)
+        return res
+
+    def order(self, countryK: id, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for order data from DB mirroring.
+
+        Args:
+            countryK (id):  selected country id
+            sportN (id): selected sport id
+
+        Returns:
+            float: sport order in country
+        &#34;&#34;&#34;
+        try:
+            return self.order_data[countryK][sportN]
+        except KeyError:
+            return 0
+
+    def points(self, countryK: id, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for points data from DB mirroring.
+
+        Args:
+            countryK (id):  selected country id
+            sportN (id): selected sport id
+
+        Returns:
+            float: sport points in country
+        &#34;&#34;&#34;
+        try:
+            return self.points_data[countryK][sportN]
+        except KeyError:
+            return 0
+
+    def max_points(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for max points = best score data from DB mirroring.
+
+        Args:
+            sportN (id): selected sport id
+
+        Returns:
+            float: best score in sport
+        &#34;&#34;&#34;
+        try:
+            return self.max_points_data[sportN]
+        except KeyError:
+            return 0
+
+    def num_countries_in_sport(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for number of countries in selected sport scoring table data from DB mirroring.
+
+        Args:
+            sportN (id): selected sport id
+
+        Returns:
+            float: number of countries in selected sport
+        &#34;&#34;&#34;
+        try:
+            return self.num_countries_in_sport_data[sportN]
+        except KeyError:
+            return 0
+
+    def total_points(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Getter for sum of points of selected country in all sports - from DB mirroring.
+
+        Args:
+            countryK (id): selected country id
+
+        Returns:
+            float: total points of country
+        &#34;&#34;&#34;
+        try:
+            return self.total_country_points_data[countryK]
+        except KeyError:
+            return 0
+
+    def min_order(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Getter for min order = best ranking of selected country - data from DB mirroring.
+
+        Args:
+            countryK (id):  selected country id
+
+        Returns:
+            float: best ranking of selected country
+        &#34;&#34;&#34;
+        try:
+            return self.min_order_data[countryK]
+        except KeyError:
+            return 0
+
+    def norm_BGS(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed value of BGS for selected sport.
+
+        Args:
+            sportN (id): selected sport
+
+        Returns:
+            float: normed BGS
+        &#34;&#34;&#34;
+
+        return self.BGS(sportN) / self.total_BGS()
+
+    def total_BGS(self) -&gt; float:
+        &#34;&#34;&#34; Calculate sum of BGS of all sports.
+
+        Returns:
+            float: sum of BGSs
+        &#34;&#34;&#34;
+
+        if self.total_BGS_data is not None:
+            return self.total_BGS_data
+
+        else:
+            suma = 0
+
+            for sportN in self.allSportIds():
+                suma += self.BGS(sportN)
+            self.total_BGS_data = suma
+            return suma
+
+    def BGS(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Returns biggest global sport number for selected sport - from DB mirror.
+
+        Args:
+            sportN (id): selected sport
+
+        Returns:
+            float: BGS of sport
+        &#34;&#34;&#34;
+        try:
+            return self.BGS_data[sportN]
+        except KeyError:
+            return 0
+
+    def getFinalOrderById(self, countryK: id) -&gt; Dict[int, Dict[str, Any]]:
+        &#34;&#34;&#34; Create final sport order for selected country id.
+
+        Args:
+            countryK (id): selected country id
+
+        Returns:
+            Dict[int, Dict[str, Any]]: dict with keys = ranks and values = dicts with keys order, code, title, value.
+        &#34;&#34;&#34;
+        sportInfo = DB.getAllSportInfo()
+
+        result = {}
+
+        p = []
+        for i, j in c.allSportImportance(countryK).items():
+            p.append((-j, i))
+        p.sort()
+
+        order = 1
+        for value, id in p:
+            code, title = sportInfo[id]
+            result[order] = {&#34;order&#34;: order, &#34;code&#34;: code, &#34;title&#34;: title, &#34;value&#34;: -value}
+            order += 1
+
+        return result
+
+    def getFinalOrderByCountryCode(self, countryCode: str) -&gt; Dict[str, List[Dict[str, Any]]]:
+        &#34;&#34;&#34; Create final sport order for selected country code.
+
+        Args:
+            countryCode (str): selected country code
+
+        Returns:
+            Dict[str, List[Dict[str, Any]]]: dict with one key = chart, and value = list of dicts with
+             keys order, code, title, value.
+        &#34;&#34;&#34;
+        result = []
+        id = DB.countryCodeToID(countryCode)
+        for key in self.getFinalOrderById(id).values():
+            result.append(key)
+        return {&#34;chart&#34;: result}
+
+
+# print(c.BGS_data)
+# print(c.order(77,10)) # returns 3, correct
+# print(c.points(77,10)) # returns 13549.68, correct
+# print(c.max_points(56)) # returns 5500.2, correct
+# print(c.num_countries_in_sport(194)) # returns 160, correct
+# print(c.total_points(27)) # returns 19309.310000000005, correct
+# print(c.econ_interconnectness(234, 237)) # returns 57109.0345, correct
+# print(c.nonecon_interconnectness(160, 199)) # returns 0.0075, correct
+# print(c.min_order(55)) # returns 56, correct
+# print(c.allActiveCountryIds())
+# print(c.allSportIds())
+
+c = Computations()
+# print(t - time.time())
+# p = []
+# for i, j in c.allSportImportance(104).items():
+#    p.append((-j, i))
+# p.sort()
+# for i,j in p:
+#    print(j)
+
+# print(c.norm_BGS(2))
+# print(t -time.time())
+
+# print(c.norm_BGS(25)) # correct
+
+# print(c.econ_interconnectness(3, 35))
+# print(c.nonecon_interconnectness(3, 35))
+# print(c.total_interconnectness(3,35))
+# print(c.norm_interconnectness(3,35))
+# need to change econ in db to norm econ and nonecon to norm nonecon
+
+# print(c.sport_importance_in_country(7,3)) # should be 0.0222
+
+# print(c.norm_success(3,3))
+# print(c.order_data[3])
+# print(c.num_countries_in_sport(4))
+
+# print(c.success(4,11))
+
+# print(c.nonecon_interconnectness(3,11))
+
+# print(c.total_branch_fundng(46, 47, 103)) # correct china, archery only from combi funding
+
+# print(c.total_branch_fundng(160, 18, 31)) # correct new zeland, curling, sum of branch and combi funding
+# print(c.total_country_%(countryCofunding(160)) # fixed
+# print(c.allBranchInSportIds(3))
+
+
+# print(c.getFinalOrderById(204))
+
+# print(c.norm_funding(18,160))
+
+# print(c.sport_importance_in_country(3,160))
+
+#print(c.getFinalOrderByCountryCode(&#39;SVK&#39;))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="__init__.CompError"><code class="flex name class">
+<span>class <span class="ident">CompError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CompError(Exception):
+    ...</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="__init__.Computations"><code class="flex name class">
+<span>class <span class="ident">Computations</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set constants PV, initialize DB mirroring.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Computations:
+
+    def __init__(self):
+        &#34;&#34;&#34; Set constants PV, initialize DB mirroring. &#34;&#34;&#34;
+
+        self.PV1 = 0.5
+        self.PV2 = 0.16
+        self.PV3 = 0.34
+        self.PV4 = 2
+
+        # small db mirroring model will be initialize here
+        #  local info from db which are frequently used in computations are stored in lists, maps
+        self.BGS_data = DB.getBGS()
+        self.order_data = DB.getOrder()
+        self.points_data = DB.getPoints()
+        self.max_points_data = DB.getMaxPoints()
+        self.num_countries_in_sport_data = DB.getNumCountriesInSport()
+        self.total_country_points_data = DB.getTotalCountryPoints()
+        self.min_order_data = DB.getMinOrder()
+        self.econ_interconnectness_data = DB.getEconIntercon()
+        self.nonecon_interconnectness_data = DB.getNonEconIntercon()
+        self.noncombi_funding_data = DB.getNonCombiBranchFunding()
+        self.combi_funding = DB.getCombiFunding()
+
+        self.country_data = DB.getActiveCountryIds()
+        self.sport_data = DB.getSportIds()
+        self.noncombi_branch_data = DB.getNonCombiBranchIds()
+
+        self.noncombi_branch_with_sport_data = DB.getNonCombiWithSportBranchIds()
+
+        # zrkadlenie na urychlenie vypoctov
+        self.total_BGS_data = None
+        self.total_country_fund_data = {}
+        self.total_success_of_country_data = {}
+
+    def allActiveCountryIds(self) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse country data from DB mirroring and returns list of active country ids.
+
+        Returns:
+            List[int]:
+        &#34;&#34;&#34;
+
+        res = []
+
+        for record in self.country_data:
+            res.append(record[&#34;id&#34;])
+
+        return res
+
+    def allBranchIds(self) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse non combi branch data from DB mirroring and returns list of non combi branch of ids.
+
+        Returns:
+            List[int]: list of branch ids
+        &#34;&#34;&#34;
+
+        res = []
+
+        for item in self.noncombi_branch_data:
+            res.append(item[&#34;id&#34;])
+
+        return res
+
+    def allBranchInSportIds(self, sportN: id) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse non combi branch data which belongs to selected sport
+        from DB mirroring and returns list of non combi branch of ids.
+
+        Args:
+            sportN (id): selected sport id
+
+        Returns:
+            List[int]: list of branch ids
+        &#34;&#34;&#34;
+        res = []
+
+        try:
+            for item in self.noncombi_branch_with_sport_data[sportN]:
+                res.append(item)
+        except KeyError:
+            ...
+
+        return res
+
+    def allSportIds(self) -&gt; List[int]:
+        &#34;&#34;&#34; Function that parse sport data from DB mirroring and returns list of sport ids.
+
+        Returns:
+            List[int]: list of sport ids
+        &#34;&#34;&#34;
+        res = []
+
+        for record in self.sport_data:
+            res.append(record[&#34;id&#34;])
+
+        return res
+
+    def allSportImportance(self, countryK: id) -&gt; Dict[int, float]:
+        &#34;&#34;&#34; Calutale importance of each sport in selected country.
+
+        Args:
+            countryK (id): sleected country id
+
+        Returns:
+            Dict[int, float]: dict which keys are sport ids and values are importance numbers.
+        &#34;&#34;&#34;
+        res = {}
+        for sport in self.allSportIds():
+            res[sport] = self.importance(countryK, sport)
+
+        return res
+
+    def importance(self, countryK: id, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Calculate importtance for selected sport in selected country.
+
+        Args:
+            countryK (id): selected country id
+            sportN (id): selected sport id
+
+        Returns:
+            float: importance of sport in country
+        &#34;&#34;&#34;
+        suma = 0
+        for countryJ in self.allActiveCountryIds():
+            if countryK != countryJ:
+                suma += self.sport_importance_in_country(sportN, countryJ) * self.norm_interconnectness(countryK,
+                                                                                                        countryJ)
+
+        return self.PV3 * self.norm_BGS(sportN) + (1 - self.PV3) * suma
+
+    def norm_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed interconnectness between selected countries.
+
+        Args:
+            countryK (id): country one id
+            countryJ (id): country two id
+
+        Raises:
+            CompError: countries cant be the same
+
+        Returns:
+            float: normed interconnectness between country one and two
+        &#34;&#34;&#34;
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute norm interconectness for same countries&#34;)
+
+        return self.total_interconnectness(countryK, countryJ) * (1 - self.econ_interconnectness(countryK, countryJ))
+
+    def total_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Calculate total interconnectness between selected countries.
+
+        Args:
+            countryK (id): country one id
+            countryJ (id): country two id
+
+        Raises:
+            CompError: countries cant be the same
+
+        Returns:
+            float: total interconnectness between one and two
+        &#34;&#34;&#34;
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute total interconectness for same countries&#34;)
+
+        return (self.econ_interconnectness(countryK, countryJ) + self.nonecon_interconnectness(countryK, countryJ)) / 2
+
+    def econ_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Returns economic interconnectness between selected countries from DB mirroring.
+
+        Args:
+            countryK (id): country one id
+            countryJ (id): country two id
+
+        Raises:
+            CompError: countries cant be the same
+
+        Returns:
+            float: economic interconnectness between one and two
+        &#34;&#34;&#34;
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute econ interconectness for same countries&#34;)
+
+        try:
+            return self.econ_interconnectness_data[countryK][countryJ]
+        except KeyError:
+            return 0
+
+    def nonecon_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+        &#34;&#34;&#34; Returns non-economic interconnectness between selected countries from DB mirroring.
+
+                Args:
+                    countryK (id): country one id
+                    countryJ (id): country two id
+
+                Raises:
+                    CompError: countries cant be the same
+
+                Returns:
+                    float: non-economic interconnectness between one and two
+                &#34;&#34;&#34;
+
+        if countryK == countryJ:
+            raise CompError(&#34;cannot compute nonecon interconectness for same countries&#34;)
+
+        try:
+            return self.nonecon_interconnectness_data[countryK][countryJ]
+        except KeyError:
+            return 0
+
+    def sport_importance_in_country(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate importance of selected sport in selected country.
+
+        Args:
+            sportN (id): selected sport id
+            countryK (id): selected country id
+
+        Returns:
+            float: importance of sport
+        &#34;&#34;&#34;
+        normFun = self.norm_funding(sportN, countryK)
+        normSuc = self.norm_success(sportN, countryK)
+
+        if normFun &gt; 0:
+            return (self.PV1 * normFun + self.PV2 * normSuc) / (self.PV1 + self.PV2)
+        else:
+            return normSuc
+
+    def norm_funding(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed funding of selected sport in selected country.
+
+        Args:
+            sportN (id): selected sport
+            countryK (id): selected country
+
+        Returns:
+            float: normed funding
+        &#34;&#34;&#34;
+        if self.total_country_funding(countryK) == 0:
+            return 0
+
+        suma = 0
+
+        for branchB in self.allBranchInSportIds(sportN):
+            suma += self.total_branch_funding(countryK, sportN, branchB) / self.total_country_funding(countryK)
+
+        return suma
+
+    def total_branch_funding(self, countryK, sportN, branchB) -&gt; float:
+        &#34;&#34;&#34; Calculate total branch funding = direct funding + funding from combi branches.
+
+        Args:
+            countryK ([type]): selected country id
+            sportN ([type]): selected sport id
+            branchB ([type]): selected branch id
+        Returns:
+            float: [description]
+        &#34;&#34;&#34;
+        res = self.branch_funding(countryK, sportN, branchB)
+
+        try:
+            data = self.combi_funding[countryK][branchB].items()
+        except KeyError:
+            data = []
+
+        for combi, fund in data:
+            res += fund
+
+        return res
+
+    def branch_funding(self, countryK: id, sportN: id, branchB: id) -&gt; float:
+        &#34;&#34;&#34; Get non combi branch funding from DB mirror.
+
+        Args:
+            countryK ([type]): selected country id
+            sportN ([type]): selected sport id
+            branchB ([type]): selected branch id
+
+        Returns:
+            float: non combi branch funding = direct funding
+        &#34;&#34;&#34;
+        try:
+            return self.noncombi_funding_data[countryK][sportN][branchB]
+        except KeyError:
+            return 0
+
+    def total_country_funding(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Sum of all fundings in selected country.
+
+        Args:
+            countryK (id):selected country id
+
+        Returns:
+            float: total funding of country
+        &#34;&#34;&#34;
+
+        if countryK in self.total_country_fund_data:
+            return self.total_country_fund_data[countryK]
+        else:
+            suma = 0
+
+            for sportN in self.allSportIds():
+                for branchB in self.allBranchInSportIds(sportN):
+                    tmp = self.total_branch_funding(countryK, sportN, branchB)
+                    suma += tmp
+
+            self.total_country_fund_data[countryK] = suma
+            return suma
+
+    def norm_success(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed success of selected sport in selected country.
+
+        Args:
+            sportN (id): selected sport
+            countryK (id): selected country
+
+        Returns:
+            float: normed success
+        &#34;&#34;&#34;
+        if self.total_success(countryK) == 0:
+            return 0
+
+        return self.success(sportN, countryK) / self.total_success(countryK)
+
+    def total_success(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate sum of successes in each sport in selected country.
+
+        Args:
+            countryK (id): selected country
+
+        Returns:
+            float: total success
+        &#34;&#34;&#34;
+        if countryK in self.total_success_of_country_data:
+            return self.total_success_of_country_data[countryK]
+        else:
+            suma = 0
+
+            for sportN in self.allSportIds():
+                suma += self.success(sportN, countryK)
+
+            self.total_success_of_country_data[countryK] = suma
+            return suma
+
+    def success(self, sportN: id, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Calculate success of selected sport in selected country using order, points, total pointsm
+        min order, max points.
+
+        Args:
+            sportN (id): selected sport id
+            countryK (id): selected country id
+
+        Returns:
+            float: [description]
+        &#34;&#34;&#34;
+        res = 0
+
+        order = self.order(countryK, sportN)
+        if order &gt; 0:
+            res += (1 / 4) * ((self.num_countries_in_sport(sportN) + 1 - order) / self.num_countries_in_sport(sportN))
+
+        points = self.points(countryK, sportN)
+        if points &gt; 0:
+            res += (1 / 4) * (points / self.max_points(sportN))
+
+        totalPoints = self.total_points(countryK)
+        if totalPoints &gt; 0:
+            res += (1 / 4) * ((self.points(countryK, sportN) ** self.PV4) / (totalPoints ** self.PV4))
+
+        if order &gt; 0:
+            res += (1 / 4) * (self.min_order(countryK) / order)
+        return res
+
+    def order(self, countryK: id, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for order data from DB mirroring.
+
+        Args:
+            countryK (id):  selected country id
+            sportN (id): selected sport id
+
+        Returns:
+            float: sport order in country
+        &#34;&#34;&#34;
+        try:
+            return self.order_data[countryK][sportN]
+        except KeyError:
+            return 0
+
+    def points(self, countryK: id, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for points data from DB mirroring.
+
+        Args:
+            countryK (id):  selected country id
+            sportN (id): selected sport id
+
+        Returns:
+            float: sport points in country
+        &#34;&#34;&#34;
+        try:
+            return self.points_data[countryK][sportN]
+        except KeyError:
+            return 0
+
+    def max_points(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for max points = best score data from DB mirroring.
+
+        Args:
+            sportN (id): selected sport id
+
+        Returns:
+            float: best score in sport
+        &#34;&#34;&#34;
+        try:
+            return self.max_points_data[sportN]
+        except KeyError:
+            return 0
+
+    def num_countries_in_sport(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Getter for number of countries in selected sport scoring table data from DB mirroring.
+
+        Args:
+            sportN (id): selected sport id
+
+        Returns:
+            float: number of countries in selected sport
+        &#34;&#34;&#34;
+        try:
+            return self.num_countries_in_sport_data[sportN]
+        except KeyError:
+            return 0
+
+    def total_points(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Getter for sum of points of selected country in all sports - from DB mirroring.
+
+        Args:
+            countryK (id): selected country id
+
+        Returns:
+            float: total points of country
+        &#34;&#34;&#34;
+        try:
+            return self.total_country_points_data[countryK]
+        except KeyError:
+            return 0
+
+    def min_order(self, countryK: id) -&gt; float:
+        &#34;&#34;&#34; Getter for min order = best ranking of selected country - data from DB mirroring.
+
+        Args:
+            countryK (id):  selected country id
+
+        Returns:
+            float: best ranking of selected country
+        &#34;&#34;&#34;
+        try:
+            return self.min_order_data[countryK]
+        except KeyError:
+            return 0
+
+    def norm_BGS(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Calculate normed value of BGS for selected sport.
+
+        Args:
+            sportN (id): selected sport
+
+        Returns:
+            float: normed BGS
+        &#34;&#34;&#34;
+
+        return self.BGS(sportN) / self.total_BGS()
+
+    def total_BGS(self) -&gt; float:
+        &#34;&#34;&#34; Calculate sum of BGS of all sports.
+
+        Returns:
+            float: sum of BGSs
+        &#34;&#34;&#34;
+
+        if self.total_BGS_data is not None:
+            return self.total_BGS_data
+
+        else:
+            suma = 0
+
+            for sportN in self.allSportIds():
+                suma += self.BGS(sportN)
+            self.total_BGS_data = suma
+            return suma
+
+    def BGS(self, sportN: id) -&gt; float:
+        &#34;&#34;&#34; Returns biggest global sport number for selected sport - from DB mirror.
+
+        Args:
+            sportN (id): selected sport
+
+        Returns:
+            float: BGS of sport
+        &#34;&#34;&#34;
+        try:
+            return self.BGS_data[sportN]
+        except KeyError:
+            return 0
+
+    def getFinalOrderById(self, countryK: id) -&gt; Dict[int, Dict[str, Any]]:
+        &#34;&#34;&#34; Create final sport order for selected country id.
+
+        Args:
+            countryK (id): selected country id
+
+        Returns:
+            Dict[int, Dict[str, Any]]: dict with keys = ranks and values = dicts with keys order, code, title, value.
+        &#34;&#34;&#34;
+        sportInfo = DB.getAllSportInfo()
+
+        result = {}
+
+        p = []
+        for i, j in c.allSportImportance(countryK).items():
+            p.append((-j, i))
+        p.sort()
+
+        order = 1
+        for value, id in p:
+            code, title = sportInfo[id]
+            result[order] = {&#34;order&#34;: order, &#34;code&#34;: code, &#34;title&#34;: title, &#34;value&#34;: -value}
+            order += 1
+
+        return result
+
+    def getFinalOrderByCountryCode(self, countryCode: str) -&gt; Dict[str, List[Dict[str, Any]]]:
+        &#34;&#34;&#34; Create final sport order for selected country code.
+
+        Args:
+            countryCode (str): selected country code
+
+        Returns:
+            Dict[str, List[Dict[str, Any]]]: dict with one key = chart, and value = list of dicts with
+             keys order, code, title, value.
+        &#34;&#34;&#34;
+        result = []
+        id = DB.countryCodeToID(countryCode)
+        for key in self.getFinalOrderById(id).values():
+            result.append(key)
+        return {&#34;chart&#34;: result}</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="__init__.Computations.BGS"><code class="name flex">
+<span>def <span class="ident">BGS</span></span>(<span>self, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns biggest global sport number for selected sport - from DB mirror.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>BGS of sport</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BGS(self, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Returns biggest global sport number for selected sport - from DB mirror.
+
+    Args:
+        sportN (id): selected sport
+
+    Returns:
+        float: BGS of sport
+    &#34;&#34;&#34;
+    try:
+        return self.BGS_data[sportN]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.allActiveCountryIds"><code class="name flex">
+<span>def <span class="ident">allActiveCountryIds</span></span>(<span>self) ‑> List[int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that parse country data from DB mirroring and returns list of active country ids.</p>
+<h2 id="returns">Returns</h2>
+<p>List[int]:</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def allActiveCountryIds(self) -&gt; List[int]:
+    &#34;&#34;&#34; Function that parse country data from DB mirroring and returns list of active country ids.
+
+    Returns:
+        List[int]:
+    &#34;&#34;&#34;
+
+    res = []
+
+    for record in self.country_data:
+        res.append(record[&#34;id&#34;])
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.allBranchIds"><code class="name flex">
+<span>def <span class="ident">allBranchIds</span></span>(<span>self) ‑> List[int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that parse non combi branch data from DB mirroring and returns list of non combi branch of ids.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[int]</code></dt>
+<dd>list of branch ids</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def allBranchIds(self) -&gt; List[int]:
+    &#34;&#34;&#34; Function that parse non combi branch data from DB mirroring and returns list of non combi branch of ids.
+
+    Returns:
+        List[int]: list of branch ids
+    &#34;&#34;&#34;
+
+    res = []
+
+    for item in self.noncombi_branch_data:
+        res.append(item[&#34;id&#34;])
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.allBranchInSportIds"><code class="name flex">
+<span>def <span class="ident">allBranchInSportIds</span></span>(<span>self, sportN: <built-in function id>) ‑> List[int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that parse non combi branch data which belongs to selected sport
+from DB mirroring and returns list of non combi branch of ids.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[int]</code></dt>
+<dd>list of branch ids</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def allBranchInSportIds(self, sportN: id) -&gt; List[int]:
+    &#34;&#34;&#34; Function that parse non combi branch data which belongs to selected sport
+    from DB mirroring and returns list of non combi branch of ids.
+
+    Args:
+        sportN (id): selected sport id
+
+    Returns:
+        List[int]: list of branch ids
+    &#34;&#34;&#34;
+    res = []
+
+    try:
+        for item in self.noncombi_branch_with_sport_data[sportN]:
+            res.append(item)
+    except KeyError:
+        ...
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.allSportIds"><code class="name flex">
+<span>def <span class="ident">allSportIds</span></span>(<span>self) ‑> List[int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that parse sport data from DB mirroring and returns list of sport ids.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[int]</code></dt>
+<dd>list of sport ids</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def allSportIds(self) -&gt; List[int]:
+    &#34;&#34;&#34; Function that parse sport data from DB mirroring and returns list of sport ids.
+
+    Returns:
+        List[int]: list of sport ids
+    &#34;&#34;&#34;
+    res = []
+
+    for record in self.sport_data:
+        res.append(record[&#34;id&#34;])
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.allSportImportance"><code class="name flex">
+<span>def <span class="ident">allSportImportance</span></span>(<span>self, countryK: <built-in function id>) ‑> Dict[int, float]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calutale importance of each sport in selected country.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>sleected country id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[int, float]</code></dt>
+<dd>dict which keys are sport ids and values are importance numbers.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def allSportImportance(self, countryK: id) -&gt; Dict[int, float]:
+    &#34;&#34;&#34; Calutale importance of each sport in selected country.
+
+    Args:
+        countryK (id): sleected country id
+
+    Returns:
+        Dict[int, float]: dict which keys are sport ids and values are importance numbers.
+    &#34;&#34;&#34;
+    res = {}
+    for sport in self.allSportIds():
+        res[sport] = self.importance(countryK, sport)
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.branch_funding"><code class="name flex">
+<span>def <span class="ident">branch_funding</span></span>(<span>self, countryK: <built-in function id>, sportN: <built-in function id>, branchB: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get non combi branch funding from DB mirror.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>selected country id</dd>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>selected sport id</dd>
+<dt><strong><code>branchB</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>selected branch id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>non combi branch funding = direct funding</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def branch_funding(self, countryK: id, sportN: id, branchB: id) -&gt; float:
+    &#34;&#34;&#34; Get non combi branch funding from DB mirror.
+
+    Args:
+        countryK ([type]): selected country id
+        sportN ([type]): selected sport id
+        branchB ([type]): selected branch id
+
+    Returns:
+        float: non combi branch funding = direct funding
+    &#34;&#34;&#34;
+    try:
+        return self.noncombi_funding_data[countryK][sportN][branchB]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.econ_interconnectness"><code class="name flex">
+<span>def <span class="ident">econ_interconnectness</span></span>(<span>self, countryK: <built-in function id>, countryJ: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns economic interconnectness between selected countries from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>country one id</dd>
+<dt><strong><code>countryJ</code></strong> :&ensp;<code>id</code></dt>
+<dd>country two id</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="__init__.CompError" href="#__init__.CompError">CompError</a></code></dt>
+<dd>countries cant be the same</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>economic interconnectness between one and two</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def econ_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+    &#34;&#34;&#34; Returns economic interconnectness between selected countries from DB mirroring.
+
+    Args:
+        countryK (id): country one id
+        countryJ (id): country two id
+
+    Raises:
+        CompError: countries cant be the same
+
+    Returns:
+        float: economic interconnectness between one and two
+    &#34;&#34;&#34;
+    if countryK == countryJ:
+        raise CompError(&#34;cannot compute econ interconectness for same countries&#34;)
+
+    try:
+        return self.econ_interconnectness_data[countryK][countryJ]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.getFinalOrderByCountryCode"><code class="name flex">
+<span>def <span class="ident">getFinalOrderByCountryCode</span></span>(<span>self, countryCode: str) ‑> Dict[str, List[Dict[str, Any]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create final sport order for selected country code.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryCode</code></strong> :&ensp;<code>str</code></dt>
+<dd>selected country code</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[str, List[Dict[str, Any]]]</code></dt>
+<dd>dict with one key = chart, and value = list of dicts with</dd>
+</dl>
+<p>keys order, code, title, value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFinalOrderByCountryCode(self, countryCode: str) -&gt; Dict[str, List[Dict[str, Any]]]:
+    &#34;&#34;&#34; Create final sport order for selected country code.
+
+    Args:
+        countryCode (str): selected country code
+
+    Returns:
+        Dict[str, List[Dict[str, Any]]]: dict with one key = chart, and value = list of dicts with
+         keys order, code, title, value.
+    &#34;&#34;&#34;
+    result = []
+    id = DB.countryCodeToID(countryCode)
+    for key in self.getFinalOrderById(id).values():
+        result.append(key)
+    return {&#34;chart&#34;: result}</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.getFinalOrderById"><code class="name flex">
+<span>def <span class="ident">getFinalOrderById</span></span>(<span>self, countryK: <built-in function id>) ‑> Dict[int, Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create final sport order for selected country id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[int, Dict[str, Any]]</code></dt>
+<dd>dict with keys = ranks and values = dicts with keys order, code, title, value.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFinalOrderById(self, countryK: id) -&gt; Dict[int, Dict[str, Any]]:
+    &#34;&#34;&#34; Create final sport order for selected country id.
+
+    Args:
+        countryK (id): selected country id
+
+    Returns:
+        Dict[int, Dict[str, Any]]: dict with keys = ranks and values = dicts with keys order, code, title, value.
+    &#34;&#34;&#34;
+    sportInfo = DB.getAllSportInfo()
+
+    result = {}
+
+    p = []
+    for i, j in c.allSportImportance(countryK).items():
+        p.append((-j, i))
+    p.sort()
+
+    order = 1
+    for value, id in p:
+        code, title = sportInfo[id]
+        result[order] = {&#34;order&#34;: order, &#34;code&#34;: code, &#34;title&#34;: title, &#34;value&#34;: -value}
+        order += 1
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.importance"><code class="name flex">
+<span>def <span class="ident">importance</span></span>(<span>self, countryK: <built-in function id>, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate importtance for selected sport in selected country.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>importance of sport in country</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def importance(self, countryK: id, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Calculate importtance for selected sport in selected country.
+
+    Args:
+        countryK (id): selected country id
+        sportN (id): selected sport id
+
+    Returns:
+        float: importance of sport in country
+    &#34;&#34;&#34;
+    suma = 0
+    for countryJ in self.allActiveCountryIds():
+        if countryK != countryJ:
+            suma += self.sport_importance_in_country(sportN, countryJ) * self.norm_interconnectness(countryK,
+                                                                                                    countryJ)
+
+    return self.PV3 * self.norm_BGS(sportN) + (1 - self.PV3) * suma</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.max_points"><code class="name flex">
+<span>def <span class="ident">max_points</span></span>(<span>self, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Getter for max points = best score data from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>best score in sport</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def max_points(self, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Getter for max points = best score data from DB mirroring.
+
+    Args:
+        sportN (id): selected sport id
+
+    Returns:
+        float: best score in sport
+    &#34;&#34;&#34;
+    try:
+        return self.max_points_data[sportN]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.min_order"><code class="name flex">
+<span>def <span class="ident">min_order</span></span>(<span>self, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Getter for min order = best ranking of selected country - data from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>best ranking of selected country</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def min_order(self, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Getter for min order = best ranking of selected country - data from DB mirroring.
+
+    Args:
+        countryK (id):  selected country id
+
+    Returns:
+        float: best ranking of selected country
+    &#34;&#34;&#34;
+    try:
+        return self.min_order_data[countryK]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.nonecon_interconnectness"><code class="name flex">
+<span>def <span class="ident">nonecon_interconnectness</span></span>(<span>self, countryK: <built-in function id>, countryJ: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns non-economic interconnectness between selected countries from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>country one id</dd>
+<dt><strong><code>countryJ</code></strong> :&ensp;<code>id</code></dt>
+<dd>country two id</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="__init__.CompError" href="#__init__.CompError">CompError</a></code></dt>
+<dd>countries cant be the same</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>non-economic interconnectness between one and two</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def nonecon_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+    &#34;&#34;&#34; Returns non-economic interconnectness between selected countries from DB mirroring.
+
+            Args:
+                countryK (id): country one id
+                countryJ (id): country two id
+
+            Raises:
+                CompError: countries cant be the same
+
+            Returns:
+                float: non-economic interconnectness between one and two
+            &#34;&#34;&#34;
+
+    if countryK == countryJ:
+        raise CompError(&#34;cannot compute nonecon interconectness for same countries&#34;)
+
+    try:
+        return self.nonecon_interconnectness_data[countryK][countryJ]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.norm_BGS"><code class="name flex">
+<span>def <span class="ident">norm_BGS</span></span>(<span>self, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate normed value of BGS for selected sport.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>normed BGS</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def norm_BGS(self, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Calculate normed value of BGS for selected sport.
+
+    Args:
+        sportN (id): selected sport
+
+    Returns:
+        float: normed BGS
+    &#34;&#34;&#34;
+
+    return self.BGS(sportN) / self.total_BGS()</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.norm_funding"><code class="name flex">
+<span>def <span class="ident">norm_funding</span></span>(<span>self, sportN: <built-in function id>, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate normed funding of selected sport in selected country.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport</dd>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>normed funding</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def norm_funding(self, sportN: id, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Calculate normed funding of selected sport in selected country.
+
+    Args:
+        sportN (id): selected sport
+        countryK (id): selected country
+
+    Returns:
+        float: normed funding
+    &#34;&#34;&#34;
+    if self.total_country_funding(countryK) == 0:
+        return 0
+
+    suma = 0
+
+    for branchB in self.allBranchInSportIds(sportN):
+        suma += self.total_branch_funding(countryK, sportN, branchB) / self.total_country_funding(countryK)
+
+    return suma</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.norm_interconnectness"><code class="name flex">
+<span>def <span class="ident">norm_interconnectness</span></span>(<span>self, countryK: <built-in function id>, countryJ: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate normed interconnectness between selected countries.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>country one id</dd>
+<dt><strong><code>countryJ</code></strong> :&ensp;<code>id</code></dt>
+<dd>country two id</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="__init__.CompError" href="#__init__.CompError">CompError</a></code></dt>
+<dd>countries cant be the same</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>normed interconnectness between country one and two</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def norm_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+    &#34;&#34;&#34; Calculate normed interconnectness between selected countries.
+
+    Args:
+        countryK (id): country one id
+        countryJ (id): country two id
+
+    Raises:
+        CompError: countries cant be the same
+
+    Returns:
+        float: normed interconnectness between country one and two
+    &#34;&#34;&#34;
+    if countryK == countryJ:
+        raise CompError(&#34;cannot compute norm interconectness for same countries&#34;)
+
+    return self.total_interconnectness(countryK, countryJ) * (1 - self.econ_interconnectness(countryK, countryJ))</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.norm_success"><code class="name flex">
+<span>def <span class="ident">norm_success</span></span>(<span>self, sportN: <built-in function id>, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate normed success of selected sport in selected country.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport</dd>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>normed success</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def norm_success(self, sportN: id, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Calculate normed success of selected sport in selected country.
+
+    Args:
+        sportN (id): selected sport
+        countryK (id): selected country
+
+    Returns:
+        float: normed success
+    &#34;&#34;&#34;
+    if self.total_success(countryK) == 0:
+        return 0
+
+    return self.success(sportN, countryK) / self.total_success(countryK)</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.num_countries_in_sport"><code class="name flex">
+<span>def <span class="ident">num_countries_in_sport</span></span>(<span>self, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Getter for number of countries in selected sport scoring table data from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>number of countries in selected sport</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def num_countries_in_sport(self, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Getter for number of countries in selected sport scoring table data from DB mirroring.
+
+    Args:
+        sportN (id): selected sport id
+
+    Returns:
+        float: number of countries in selected sport
+    &#34;&#34;&#34;
+    try:
+        return self.num_countries_in_sport_data[sportN]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.order"><code class="name flex">
+<span>def <span class="ident">order</span></span>(<span>self, countryK: <built-in function id>, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Getter for order data from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>sport order in country</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def order(self, countryK: id, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Getter for order data from DB mirroring.
+
+    Args:
+        countryK (id):  selected country id
+        sportN (id): selected sport id
+
+    Returns:
+        float: sport order in country
+    &#34;&#34;&#34;
+    try:
+        return self.order_data[countryK][sportN]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.points"><code class="name flex">
+<span>def <span class="ident">points</span></span>(<span>self, countryK: <built-in function id>, sportN: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Getter for points data from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>sport points in country</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def points(self, countryK: id, sportN: id) -&gt; float:
+    &#34;&#34;&#34; Getter for points data from DB mirroring.
+
+    Args:
+        countryK (id):  selected country id
+        sportN (id): selected sport id
+
+    Returns:
+        float: sport points in country
+    &#34;&#34;&#34;
+    try:
+        return self.points_data[countryK][sportN]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.sport_importance_in_country"><code class="name flex">
+<span>def <span class="ident">sport_importance_in_country</span></span>(<span>self, sportN: <built-in function id>, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate importance of selected sport in selected country.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>importance of sport</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sport_importance_in_country(self, sportN: id, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Calculate importance of selected sport in selected country.
+
+    Args:
+        sportN (id): selected sport id
+        countryK (id): selected country id
+
+    Returns:
+        float: importance of sport
+    &#34;&#34;&#34;
+    normFun = self.norm_funding(sportN, countryK)
+    normSuc = self.norm_success(sportN, countryK)
+
+    if normFun &gt; 0:
+        return (self.PV1 * normFun + self.PV2 * normSuc) / (self.PV1 + self.PV2)
+    else:
+        return normSuc</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.success"><code class="name flex">
+<span>def <span class="ident">success</span></span>(<span>self, sportN: <built-in function id>, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate success of selected sport in selected country using order, points, total pointsm
+min order, max points.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected sport id</dd>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>[description]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def success(self, sportN: id, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Calculate success of selected sport in selected country using order, points, total pointsm
+    min order, max points.
+
+    Args:
+        sportN (id): selected sport id
+        countryK (id): selected country id
+
+    Returns:
+        float: [description]
+    &#34;&#34;&#34;
+    res = 0
+
+    order = self.order(countryK, sportN)
+    if order &gt; 0:
+        res += (1 / 4) * ((self.num_countries_in_sport(sportN) + 1 - order) / self.num_countries_in_sport(sportN))
+
+    points = self.points(countryK, sportN)
+    if points &gt; 0:
+        res += (1 / 4) * (points / self.max_points(sportN))
+
+    totalPoints = self.total_points(countryK)
+    if totalPoints &gt; 0:
+        res += (1 / 4) * ((self.points(countryK, sportN) ** self.PV4) / (totalPoints ** self.PV4))
+
+    if order &gt; 0:
+        res += (1 / 4) * (self.min_order(countryK) / order)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.total_BGS"><code class="name flex">
+<span>def <span class="ident">total_BGS</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate sum of BGS of all sports.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>sum of BGSs</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_BGS(self) -&gt; float:
+    &#34;&#34;&#34; Calculate sum of BGS of all sports.
+
+    Returns:
+        float: sum of BGSs
+    &#34;&#34;&#34;
+
+    if self.total_BGS_data is not None:
+        return self.total_BGS_data
+
+    else:
+        suma = 0
+
+        for sportN in self.allSportIds():
+            suma += self.BGS(sportN)
+        self.total_BGS_data = suma
+        return suma</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.total_branch_funding"><code class="name flex">
+<span>def <span class="ident">total_branch_funding</span></span>(<span>self, countryK, sportN, branchB) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate total branch funding = direct funding + funding from combi branches.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>selected country id</dd>
+<dt><strong><code>sportN</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>selected sport id</dd>
+<dt><strong><code>branchB</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>selected branch id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>[description]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_branch_funding(self, countryK, sportN, branchB) -&gt; float:
+    &#34;&#34;&#34; Calculate total branch funding = direct funding + funding from combi branches.
+
+    Args:
+        countryK ([type]): selected country id
+        sportN ([type]): selected sport id
+        branchB ([type]): selected branch id
+    Returns:
+        float: [description]
+    &#34;&#34;&#34;
+    res = self.branch_funding(countryK, sportN, branchB)
+
+    try:
+        data = self.combi_funding[countryK][branchB].items()
+    except KeyError:
+        data = []
+
+    for combi, fund in data:
+        res += fund
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.total_country_funding"><code class="name flex">
+<span>def <span class="ident">total_country_funding</span></span>(<span>self, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sum of all fundings in selected country.</p>
+<h2 id="args">Args</h2>
+<p>countryK (id):selected country id</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>total funding of country</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_country_funding(self, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Sum of all fundings in selected country.
+
+    Args:
+        countryK (id):selected country id
+
+    Returns:
+        float: total funding of country
+    &#34;&#34;&#34;
+
+    if countryK in self.total_country_fund_data:
+        return self.total_country_fund_data[countryK]
+    else:
+        suma = 0
+
+        for sportN in self.allSportIds():
+            for branchB in self.allBranchInSportIds(sportN):
+                tmp = self.total_branch_funding(countryK, sportN, branchB)
+                suma += tmp
+
+        self.total_country_fund_data[countryK] = suma
+        return suma</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.total_interconnectness"><code class="name flex">
+<span>def <span class="ident">total_interconnectness</span></span>(<span>self, countryK: <built-in function id>, countryJ: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate total interconnectness between selected countries.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>country one id</dd>
+<dt><strong><code>countryJ</code></strong> :&ensp;<code>id</code></dt>
+<dd>country two id</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="__init__.CompError" href="#__init__.CompError">CompError</a></code></dt>
+<dd>countries cant be the same</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>total interconnectness between one and two</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_interconnectness(self, countryK: id, countryJ: id) -&gt; float:
+    &#34;&#34;&#34; Calculate total interconnectness between selected countries.
+
+    Args:
+        countryK (id): country one id
+        countryJ (id): country two id
+
+    Raises:
+        CompError: countries cant be the same
+
+    Returns:
+        float: total interconnectness between one and two
+    &#34;&#34;&#34;
+    if countryK == countryJ:
+        raise CompError(&#34;cannot compute total interconectness for same countries&#34;)
+
+    return (self.econ_interconnectness(countryK, countryJ) + self.nonecon_interconnectness(countryK, countryJ)) / 2</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.total_points"><code class="name flex">
+<span>def <span class="ident">total_points</span></span>(<span>self, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Getter for sum of points of selected country in all sports - from DB mirroring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>total points of country</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_points(self, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Getter for sum of points of selected country in all sports - from DB mirroring.
+
+    Args:
+        countryK (id): selected country id
+
+    Returns:
+        float: total points of country
+    &#34;&#34;&#34;
+    try:
+        return self.total_country_points_data[countryK]
+    except KeyError:
+        return 0</code></pre>
+</details>
+</dd>
+<dt id="__init__.Computations.total_success"><code class="name flex">
+<span>def <span class="ident">total_success</span></span>(<span>self, countryK: <built-in function id>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate sum of successes in each sport in selected country.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countryK</code></strong> :&ensp;<code>id</code></dt>
+<dd>selected country</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>total success</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_success(self, countryK: id) -&gt; float:
+    &#34;&#34;&#34; Calculate sum of successes in each sport in selected country.
+
+    Args:
+        countryK (id): selected country
+
+    Returns:
+        float: total success
+    &#34;&#34;&#34;
+    if countryK in self.total_success_of_country_data:
+        return self.total_success_of_country_data[countryK]
+    else:
+        suma = 0
+
+        for sportN in self.allSportIds():
+            suma += self.success(sportN, countryK)
+
+        self.total_success_of_country_data[countryK] = suma
+        return suma</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="__init__.CompError" href="#__init__.CompError">CompError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="__init__.Computations" href="#__init__.Computations">Computations</a></code></h4>
+<ul class="">
+<li><code><a title="__init__.Computations.BGS" href="#__init__.Computations.BGS">BGS</a></code></li>
+<li><code><a title="__init__.Computations.allActiveCountryIds" href="#__init__.Computations.allActiveCountryIds">allActiveCountryIds</a></code></li>
+<li><code><a title="__init__.Computations.allBranchIds" href="#__init__.Computations.allBranchIds">allBranchIds</a></code></li>
+<li><code><a title="__init__.Computations.allBranchInSportIds" href="#__init__.Computations.allBranchInSportIds">allBranchInSportIds</a></code></li>
+<li><code><a title="__init__.Computations.allSportIds" href="#__init__.Computations.allSportIds">allSportIds</a></code></li>
+<li><code><a title="__init__.Computations.allSportImportance" href="#__init__.Computations.allSportImportance">allSportImportance</a></code></li>
+<li><code><a title="__init__.Computations.branch_funding" href="#__init__.Computations.branch_funding">branch_funding</a></code></li>
+<li><code><a title="__init__.Computations.econ_interconnectness" href="#__init__.Computations.econ_interconnectness">econ_interconnectness</a></code></li>
+<li><code><a title="__init__.Computations.getFinalOrderByCountryCode" href="#__init__.Computations.getFinalOrderByCountryCode">getFinalOrderByCountryCode</a></code></li>
+<li><code><a title="__init__.Computations.getFinalOrderById" href="#__init__.Computations.getFinalOrderById">getFinalOrderById</a></code></li>
+<li><code><a title="__init__.Computations.importance" href="#__init__.Computations.importance">importance</a></code></li>
+<li><code><a title="__init__.Computations.max_points" href="#__init__.Computations.max_points">max_points</a></code></li>
+<li><code><a title="__init__.Computations.min_order" href="#__init__.Computations.min_order">min_order</a></code></li>
+<li><code><a title="__init__.Computations.nonecon_interconnectness" href="#__init__.Computations.nonecon_interconnectness">nonecon_interconnectness</a></code></li>
+<li><code><a title="__init__.Computations.norm_BGS" href="#__init__.Computations.norm_BGS">norm_BGS</a></code></li>
+<li><code><a title="__init__.Computations.norm_funding" href="#__init__.Computations.norm_funding">norm_funding</a></code></li>
+<li><code><a title="__init__.Computations.norm_interconnectness" href="#__init__.Computations.norm_interconnectness">norm_interconnectness</a></code></li>
+<li><code><a title="__init__.Computations.norm_success" href="#__init__.Computations.norm_success">norm_success</a></code></li>
+<li><code><a title="__init__.Computations.num_countries_in_sport" href="#__init__.Computations.num_countries_in_sport">num_countries_in_sport</a></code></li>
+<li><code><a title="__init__.Computations.order" href="#__init__.Computations.order">order</a></code></li>
+<li><code><a title="__init__.Computations.points" href="#__init__.Computations.points">points</a></code></li>
+<li><code><a title="__init__.Computations.sport_importance_in_country" href="#__init__.Computations.sport_importance_in_country">sport_importance_in_country</a></code></li>
+<li><code><a title="__init__.Computations.success" href="#__init__.Computations.success">success</a></code></li>
+<li><code><a title="__init__.Computations.total_BGS" href="#__init__.Computations.total_BGS">total_BGS</a></code></li>
+<li><code><a title="__init__.Computations.total_branch_funding" href="#__init__.Computations.total_branch_funding">total_branch_funding</a></code></li>
+<li><code><a title="__init__.Computations.total_country_funding" href="#__init__.Computations.total_country_funding">total_country_funding</a></code></li>
+<li><code><a title="__init__.Computations.total_interconnectness" href="#__init__.Computations.total_interconnectness">total_interconnectness</a></code></li>
+<li><code><a title="__init__.Computations.total_points" href="#__init__.Computations.total_points">total_points</a></code></li>
+<li><code><a title="__init__.Computations.total_success" href="#__init__.Computations.total_success">total_success</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
