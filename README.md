@@ -83,3 +83,7 @@ Reload the nginx service `nginx reload` and test if the web app is publicly avai
 ### Tips
 * letsencrypt certificates are easy to generate in nginx configuration with a `certbot --nginx` util.
 * Supervisor might be used to control automatically gunicorn and flask backend.
+
+<hr>
+This repository is continuation of a project that has been developed during winter semester of 2021/22 as school project. <br>
+Original repository can be found <a href='https://github.com/TIS2021-FMFI/zaujem-o-sport'>here</a>.
