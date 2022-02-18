@@ -38,7 +38,7 @@ class Funding(SwaggerView):
 		suggestions = p.findFailures(lines, correction, countryCode, currency)
 
 		if len(suggestions) == 0:
-			p.saveResults()
+			p.saveResults(countryCode)
 			return {"message": "ok"}
 		else:
 			return {"message": "fail", "suggestions": suggestions}, 400
