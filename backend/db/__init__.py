@@ -692,7 +692,6 @@ class Database:
                    Returns:
                        bool: true/false whether importing was successfull
         """
-        sql_del = "delete from funding where country_id=%(country_id)s and branch_id=%(branch_id)s"
 
         sql = "insert into funding(country_id, branch_id, absolute_funding, currency) " \
               "values (%(country_id)s, %(branch_id)s, %(amount)s, %(currency)s)"
@@ -700,7 +699,6 @@ class Database:
         try:
             with self._getConnection() as dbConn:
                 with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-                    cursor.execute(sql_del, {"country_id": country_id, "branch_id": branch_id})
                     cursor.execute(sql, {"country_id": country_id, "branch_id": branch_id, "amount": amount,
                                          "currency": currency})
                 dbConn.commit()
@@ -2046,3 +2044,16 @@ class Database:
             if "dbConn" in locals():
                 self._releaseConnection(dbConn)
             return results
+
+    def deleteFundingRecordsOfCountry(self, countryCode):
+
+        sql = "delete from funding where country_id = (select id from country where code = %(code)s)"
+        try:
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"code": countryCode})
+
+        except psycopg2.DatabaseError as error:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            self.logger.error(error)

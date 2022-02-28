@@ -94,7 +94,7 @@ class UploadView(SwaggerView):
 			suggestions = p.findFailures(lines, correction, countryCode, currency)
 
 			if len(suggestions) == 0:
-				p.saveResults()
+				p.saveResults(countryCode)
 			else:
 				return {"message": "fail", "suggestions": suggestions}, 400
 

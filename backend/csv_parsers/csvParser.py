@@ -226,8 +226,9 @@ class csvParser:
         # print(suggestions, self.result, sep="\n\n\n")
         return suggestions
 
-    def saveResults(self):
+    def saveResults(self, countryCode: str):
 
+        DB.deleteFundingRecordsOfCountry(countryCode)
         for r in self.result:
             r.save()
 
