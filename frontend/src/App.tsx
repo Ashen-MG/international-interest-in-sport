@@ -65,10 +65,10 @@ const UserRouters = () => {
 	            <Switch>
 	                <Route exact path="/"><Redirect to="/home" /></Route>
 	                <Route path="/home"><HomeUser /></Route>
-	                <Route path="/ranking"><Ranking /></Route>
+	                <Route path="/importance"><Ranking /></Route>
 	                <Route path="/funding"><Fundings /></Route>
-	                <Route path="/success"><Success /></Route>
-	                <Route path="/interconnectness"><Interconnectness /></Route>
+	                <Route path="/ranking"><Success /></Route>
+	                <Route path="/influence"><Interconnectness /></Route>
 	            </Switch>
 	          </div>
             <Footer />
