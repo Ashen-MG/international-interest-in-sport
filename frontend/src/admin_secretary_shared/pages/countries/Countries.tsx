@@ -1,10 +1,11 @@
-import {Table} from "components/table/Table";
+import {Table, TableRowsType} from "components/table/Table";
 import {CenteredRow} from "components/basic/CenteredRow";
 import {CSVLink} from "react-csv";
 import {useCountries} from "app/hooks";
 import {useContext, useEffect, useState} from "react";
 import textLang, {Language} from "app/string";
 import {LanguageContext} from "App";
+import {countryISOMapping} from "../../../helpers/country-iso-3-to-2";
 
 /** Table of countries. */
 export const Countries = () => {
@@ -14,10 +15,14 @@ export const Countries = () => {
 
 	const {isLoading, countries: responseCountries} = useCountries(language);
 
-	const [countries, setCountries] = useState<string[][]>([]);
+	const [countries, setCountries] = useState<TableRowsType>([]);
+
 
 	useEffect(() => {
-		setCountries(responseCountries.map((country) => [country.name, country.code]));
+		setCountries(responseCountries.map((country) => {
+			const countryCode = countryISOMapping[country.code]?.toLowerCase();
+			return [{element: <img src={`https://flagcdn.com/32x24/${countryCode}.png`} alt="" />, value: ""}, country.name, country.code];
+		}));
 	}, [responseCountries]);
 
 	return (<>
@@ -34,7 +39,7 @@ export const Countries = () => {
 		<CenteredRow as="section">
 			{ !isLoading && countries.length !== 0 &&
 				<Table
-					columnNames={[{name: text.name, sortable: true}, {name: text.code, sortable: true}]}
+					columnNames={[{name: "flag", sortable: false}, {name: text.name, sortable: true}, {name: text.code, sortable: true}]}
 					rows={countries} />
 			}
 		</CenteredRow>
