@@ -20,11 +20,11 @@ export const Interconnectness = () => {
 	const dataDisplayingSelectedOptions = [
 		{
 			label: "Table",
-			value: "/interconnectness/table",
+			value: "/influence/table",
 		},
 		{
 			label: "Map",
-			value: "/interconnectness/map",
+			value: "/influence/map",
 		}
 	];
 

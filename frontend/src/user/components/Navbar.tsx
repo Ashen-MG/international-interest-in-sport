@@ -14,17 +14,17 @@ function Navbar() {
                 <Nav.Item className={pathname === "/home" ? styles.active : ""}>
                     <Link className={`${styles.navItem}`} to="/home"><HouseDoor size={25} /> Home</Link>
                 </Nav.Item>
-                <Nav.Item className={pathname === "/ranking" ? styles.active : ""}>
-                    <Link className={`${styles.navItem}`} to="/ranking"><BarChart size={25} /> Ranking</Link>
+                <Nav.Item className={pathname === "/importance" ? styles.active : ""}>
+                    <Link className={`${styles.navItem}`} to="/importance"><BarChart size={25} />  International Importance</Link>
                 </Nav.Item>
                 <Nav.Item className={pathname === "/funding" ? styles.active : ""}>
-                    <Link className={`${styles.navItem}`} to="/funding"><Wallet size={25} /> Fundings</Link>
+                    <Link className={`${styles.navItem}`} to="/funding"><Wallet size={25} /> Funding</Link>
                 </Nav.Item>
-                <Nav.Item className={pathname === "/success" ? styles.active : ""}>
-                    <Link className={`${styles.navItem}`} to="/success"><List size={25} /> Success</Link>
+                <Nav.Item className={pathname === "/ranking" ? styles.active : ""}>
+                    <Link className={`${styles.navItem}`} to="/ranking"><List size={25} /> Sport Ranking</Link>
                 </Nav.Item>
-                <Nav.Item className={pathname === "/interconnectness" ? styles.active : ""}>
-                    <Link className={`${styles.navItem}`} to="/interconnectness"><Easel size={25} /> Interconnectedness</Link>
+                <Nav.Item className={pathname === "/influence" ? styles.active : ""}>
+                    <Link className={`${styles.navItem}`} to="/influence"><Easel size={25} /> Country Influence</Link>
                 </Nav.Item>
             </Nav>
         </div>
