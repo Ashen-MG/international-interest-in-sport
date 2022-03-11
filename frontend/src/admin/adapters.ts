@@ -10,6 +10,7 @@ export interface ApiUploadFiles {
 	fundingFile?: File,
 	successFile?: File,
 	interconnectednessFile?: File,
+	bgsFile?: File,
 	interconnectednessType?: number,
 	countryCode?: string,
 	currency?: string
@@ -19,6 +20,7 @@ export const apiUploadFiles = ({
 	fundingFile,
 	successFile,
 	interconnectednessFile,
+	bgsFile,
 	interconnectednessType,
 	countryCode,
 	currency
@@ -27,6 +29,7 @@ export const apiUploadFiles = ({
 	if (fundingFile !== undefined)            formData.append("fundingFile", fundingFile);
 	if (successFile !== undefined)            formData.append("successFile", successFile);
 	if (interconnectednessFile !== undefined) formData.append("interconnectednessFile", interconnectednessFile);
+	if (bgsFile !== undefined)            	  formData.append("bgsFile", bgsFile);
 	formData.append("json", JSON.stringify(
 		{countryCode: countryCode, currency: currency, interconnectednessType: interconnectednessType})
 	);
