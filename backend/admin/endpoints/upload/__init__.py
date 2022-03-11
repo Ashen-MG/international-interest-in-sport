@@ -49,6 +49,7 @@ class UploadView(SwaggerView):
 		if successFile:
 			wb = load_workbook(filename=BytesIO(successFile.read()))
 
+			p = excelParser()
 			parsed = p.parseSuccess(wb)
 
 			if DB.deleteSuccesTables():
@@ -67,6 +68,7 @@ class UploadView(SwaggerView):
 			# wb = bgsFile
 			wb = load_workbook(filename=BytesIO(bgsFile.read()))
 
+			p = excelParser()
 			parsed = p.parseBGS(wb)
 
 			if DB.deleteBGS():
