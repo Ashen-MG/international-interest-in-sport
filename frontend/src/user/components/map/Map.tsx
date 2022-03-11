@@ -1,38 +1,74 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import {MapContainer, TileLayer, GeoJSON, Marker, Popup} from 'react-leaflet'
 import {locations} from "./locationProvider";
-
+import data from "./countries.geojson.json";
 
 export type MapType = {
-        name: string,
-        code: string,
-        value: number
+	name: string,
+	code: string,
+	value: number
 }
 
 interface MapProps {
-    input: MapType[]
+	input: MapType[]
 }
 
 /** This is a map module to show the interconnection of countries.
  *  Takes a list of MapType elements as a parameter. */
 export const MapShow = ({input}: MapProps) => {
-    return (<>
 
-        <div>
-            <MapContainer style = {{height:"600px", marginTop: "2rem", marginBottom: "2rem"}} center={[51.505, -0.09]} zoom={2} scrollWheelZoom={true} zoomControl={false}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {input.map((item, i) => (
-                    <Marker position={[ locations.get(item.code)![0],locations.get(item.code)![1] ]} key={`mapShow${i}`}>
-                        <Popup>
-                            <p><b>Country name:</b> {item.name}</p>
-                            <p><b>Country code:</b> {item.code}</p>
-                            <p><b>Interconnectedness:</b> {item.value}</p>
-                        </Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
-        </div>
-    </>)
+	const max = input.reduce((a, b) => a.value > b.value ? a : b).value;
+	const min = input.reduce((a, b) => a.value < b.value ? a : b).value;
+
+	const mapPolygonColorToDensity = (density: number) => {
+		const r = (max - min) / 5;
+		return density > max - r
+			? '#a50f15'
+			: density > max - 2 * r
+			? '#de2d26'
+			: density > max - 3 * r
+			? '#fb6a4a'
+			: density > max - 4 * r
+			? '#fc9272'
+			: density > max - 5 * r
+			? '#fcbba1'
+			: '#fee5d9';
+	}
+
+	const style = (feature: any ) => {
+		const m = input.find(m => m.code === feature.properties.ISO_A3);
+		const v = m === undefined ? 0 : m.value;
+		return ({
+			fillColor: mapPolygonColorToDensity(v),
+			weight: 1,
+			opacity: 1,
+			color: 'white',
+			dashArray: '2',
+			fillOpacity: .75
+		});
+	}
+
+	return (
+		<div>
+			<MapContainer style = {{height:"600px", marginTop: "2rem", marginBottom: "2rem"}} center={[51.505, -0.09]} zoom={2} scrollWheelZoom={true} zoomControl={false}>
+				<TileLayer
+					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+				/>
+				{data && (
+					<GeoJSON data={data as any} style={style} />
+				)}
+				{/*
+				{input.map((item, i) => (
+					<Marker position={[ locations.get(item.code)![0],locations.get(item.code)![1] ]} key={`mapShow${i}`}>
+						<Popup>
+							<p><b>Country name:</b> {item.name}</p>
+							<p><b>Country code:</b> {item.code}</p>
+							<p><b>Interconnectedness:</b> {item.value}</p>
+						</Popup>
+					</Marker>
+				))}
+				*/}
+			</MapContainer>
+		</div>
+	)
 }
