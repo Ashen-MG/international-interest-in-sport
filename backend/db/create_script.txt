@@ -157,4 +157,15 @@ CREATE TABLE COUNTRY_BEST_ORDER
   );
 
 
+DROP TABLE IF EXISTS URLS CASCADE;
+CREATE TABLE URLS
+  (
+     country_id         INTEGER UNIQUE REFERENCES country(id),
+     type               VARCHAR,
+     url                VARCHAR NOT NULL
+  );
+
+
+
+
 
