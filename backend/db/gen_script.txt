@@ -13144,4 +13144,4 @@ https://kics.sport.vlaanderen/Sportfederaties/Documents/171025_Tabel_decretale_s
 ( 205 , 'https://docs.google.com/document/d/14epx0yP6IEoFnYurxN0JhS3Rt5oo1M--u876KbVoLjU/edit?usp=sharing' ),
 ( 236 , 'Current Funding Figures | UK Sport' ),
 ( 237 , 'https://www.teamusa.org/About-the-USOPC/Sport-Benefits-Statements' ),
-( 234 , 'noc-ukr.org/about/officialdocuments/zvit-pro-robotu-nok-ukraini-u-2019-roci/  http://noc-ukr.org/about/officialdocuments/zvit-pro-diyalnist-nok-u-2020-roci/' )
+( 234 , 'noc-ukr.org/about/officialdocuments/zvit-pro-robotu-nok-ukraini-u-2019-roci/  http://noc-ukr.org/about/officialdocuments/zvit-pro-diyalnist-nok-u-2020-roci/' );
