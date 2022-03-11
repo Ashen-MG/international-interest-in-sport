@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./styles/footer.module.scss";
+import minlogo from "user/components/minlogo.png";
+import fmfilogo from "user/components/fmfilogo.png";
 
 /** This is the footer for the user site */
 export const Footer = () => {
@@ -58,11 +60,17 @@ export const Footer = () => {
           {/* Column7 */}
           <div className="col">
             <ul className={`list-unstyled ${styles.listUnstyled}`}>
-              <li><figure><img src="logo.svg" alt={"logo"}/></figure></li>
-              <li><img src="logo.svg" alt={"logo"}/></li>
+              <li><img className={styles.logo} src={fmfilogo} alt={"logo"}/></li>
+            </ul>
+          </div>
+          {/* Column8 */}
+          <div className="col">
+            <ul className={`list-unstyled ${styles.listUnstyled}`}>
+              <li><img className={styles.logo} src={minlogo} alt={"logo"}/></li>
             </ul>
           </div>
         </div>
+
         <hr />
         <div className="row">
           <p className="col-sm">
