@@ -19,10 +19,10 @@ class UploadView(SwaggerView):
 
 		DB.createDatabaseBackup()
 
-
 		fundingFile = request.files.get("fundingFile")
 		successFile = request.files.get("successFile")
 		interconnectednessFile = request.files.get("interconnectednessFile")
+		bgsFile = request.files.get("bgsFile")
 
 		requestJSON = json.loads(request.form["json"])
 		countryCode = requestJSON.get("countryCode")
@@ -61,12 +61,11 @@ class UploadView(SwaggerView):
 
 		"""	
 		# TODO: list of unknown sports in parsed[1]
-		
-		BGSfile = load_workbook(filename='BGS_test.xlsx')
+		"""
 
-		if BGSfile:
-			wb = BGSfile
-			# wb = load_workbook(filename=BytesIO(BGSfile.read()))
+		if bgsFile:
+			# wb = bgsFile
+			wb = load_workbook(filename=BytesIO(bgsFile.read()))
 
 			parsed = p.parseBGS(wb)
 
@@ -74,7 +73,6 @@ class UploadView(SwaggerView):
 
 				for item in parsed:
 					item.save()
-		"""
 
 
 		if fundingFile:
