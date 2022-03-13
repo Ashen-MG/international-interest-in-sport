@@ -19,45 +19,53 @@ export const MapShow = ({input}: MapProps) => {
 	const max = input.reduce((a, b) => a.value > b.value ? a : b).value;
 	const min = input.reduce((a, b) => a.value < b.value ? a : b).value;
 
-	const mapPolygonColorToDensity = (density: number) => {
+	const onEachFeature = (feature: any, layer: any) => {
+		layer.on({
+			mouseover: () => console.log("over"),  // TODO: toolbar with interconnectedness data
+			mouseout: () => console.log("out")
+		});
+	}
+
+	const mapValueToPolygonColor = (value: number) => {
 		const r = (max - min) / 5;
-		return density > max - r
-			? '#a50f15'
-			: density > max - 2 * r
-			? '#de2d26'
-			: density > max - 3 * r
-			? '#fb6a4a'
-			: density > max - 4 * r
-			? '#fc9272'
-			: density > max - 5 * r
-			? '#fcbba1'
-			: '#fee5d9';
+		return value > max - r
+				 ? "#a50f15"
+				 : value > max - 2 * r
+				 ? "#de2d26"
+				 : value > max - 3 * r
+				 ? "#fb6a4a"
+				 : value > max - 4 * r
+				 ? "#fc9272"
+				 : value > max - 5 * r
+				 ? "#fcbba1"
+				 : "#fff1ea";
 	}
 
 	const style = (feature: any ) => {
 		const m = input.find(m => m.code === feature.properties.ISO_A3);
 		const v = m === undefined ? 0 : m.value;
 		return ({
-			fillColor: mapPolygonColorToDensity(v),
+			fillColor: mapValueToPolygonColor(v),
 			weight: 1,
 			opacity: 1,
 			color: 'white',
 			dashArray: '2',
-			fillOpacity: .75
+			fillOpacity: .8
 		});
 	}
 
 	return (
 		<div>
-			<MapContainer style = {{height:"600px", marginTop: "2rem", marginBottom: "2rem"}} center={[51.505, -0.09]} zoom={2} scrollWheelZoom={true} zoomControl={false}>
+			<MapContainer style = {{height:"600px", marginTop: "2rem", marginBottom: "2rem"}} center={[51.505, -0.09]} zoom={2}
+			              scrollWheelZoom={true} zoomControl={false} worldCopyJump={true}
+			>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 				{data && (
-					<GeoJSON data={data as any} style={style} />
+					<GeoJSON data={data as any} style={style} onEachFeature={onEachFeature} />
 				)}
-				{/*
 				{input.map((item, i) => (
 					<Marker position={[ locations.get(item.code)![0],locations.get(item.code)![1] ]} key={`mapShow${i}`}>
 						<Popup>
@@ -67,7 +75,6 @@ export const MapShow = ({input}: MapProps) => {
 						</Popup>
 					</Marker>
 				))}
-				*/}
 			</MapContainer>
 		</div>
 	)

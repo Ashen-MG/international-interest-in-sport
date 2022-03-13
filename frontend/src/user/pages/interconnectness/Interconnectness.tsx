@@ -44,6 +44,7 @@ export const Interconnectness = () => {
 	const [interconnectednessOption, setInterconnectednessOption] = useState<number>(1);
 	const [interconnectnesses, setInterconnectness] = useState<interconnectnessType[]>();
 	const [rowInterconnectness, setRowInterconnectness] = useState<(number | string)[][]>([]);
+
 	/** useEffect for loading interconnectedness types */
 	useEffect(() => {
 		if (interconnectednessType !== undefined) {
@@ -66,6 +67,7 @@ export const Interconnectness = () => {
 				setCountryOption([svkCountry.code, svkCountry.name]);
 		}
 	}, [countries]);
+
 	/** Async query for displaying interconnectedness data. */
 	const { mutateAsync: asyncInterconnectness } = useMutation(["setInterconnectedness", countryOption, interconnectednessOption],
 		() => apiInterconnectness(interconnectednessOption, countryOption[0]),
@@ -138,12 +140,12 @@ export const Interconnectness = () => {
 
 			<div className="inter">
 				<Switch>
-					<Route path="/interconnectness/table">
+					<Route path="/influence/table">
 						<Table columnNames={[{name: "Code", sortable: true}, {name: "Country", sortable: true}, {
 							name: "Value", sortable: true}, {name: "Type", sortable: true }]}
 							   rows={rowInterconnectness}/>
 					</Route>
-					<Route path="/interconnectness/map">
+					<Route path="/influence/map">
 						<>
 							{interconnectnesses !== undefined &&
 								<MapShow input={interconnectnesses.map((interconnectness) => {
