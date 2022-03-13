@@ -1,11 +1,12 @@
 import {useContext, useEffect, useState} from "react";
 import {Tab, Tabs} from "react-bootstrap";
-import {Table} from "components/table/Table";
+import {Table, TableRowsType} from "components/table/Table";
 import {CenteredRow} from "components/basic/CenteredRow";
 import {CSVLink} from "react-csv";
 import {useBranchesWithSports, useCombiBranches} from "admin_secretary_shared/hooks";
 import textLang, {Language} from "app/string";
 import {LanguageContext} from "App";
+import {getCountryImageURL} from "../../../helpers/country-iso-3-to-2";
 
 /** Table of sports with their branches. */
 export const SportsWithBranches = () => {
@@ -16,7 +17,7 @@ export const SportsWithBranches = () => {
 	const {isLoading: isLoadingBranchesWithSports, branchesWithSports: responseBranchesWithSports} = useBranchesWithSports(language);
 	const [branchesWithSports, setBranchesWithSports] = useState<string[][]>([]);
 	const {isLoading: isLoadingCombiBranches, combiBranches: responseCombiBranches} = useCombiBranches(language);
-	const [combiBranches, setCombiBranches] = useState<(string|number)[][]>([]);
+	const [combiBranches, setCombiBranches] = useState<TableRowsType>([]);
 
 	useEffect(() => {
 		setBranchesWithSports(responseBranchesWithSports.map((branchWithSport) =>
@@ -26,8 +27,9 @@ export const SportsWithBranches = () => {
 
 	useEffect(() => {
 		setCombiBranches(responseCombiBranches.map((combiBranch) =>
-			[combiBranch.countryCode, combiBranch.countryName, combiBranch.combiCode, combiBranch.combiTitle,
-			 combiBranch.subCode, combiBranch.subTitle, combiBranch.coefficient]
+			[{element: getCountryImageURL(combiBranch.countryCode, combiBranch.countryName), value: ""},
+				combiBranch.countryCode, combiBranch.countryName, combiBranch.combiCode, combiBranch.combiTitle,
+				combiBranch.subCode, combiBranch.subTitle, combiBranch.coefficient]
 		));
 	}, [responseCombiBranches]);
 
@@ -76,7 +78,8 @@ export const SportsWithBranches = () => {
 						<div>
 							{ !isLoadingCombiBranches && combiBranches.length !== 0 &&
               <Table
-                columnNames={[{name: text.countryCode, sortable: true}, {name: text.countryName, sortable: true},
+                columnNames={[{name: text.flag, sortable: false},
+                	            {name: text.countryCode, sortable: true}, {name: text.countryName, sortable: true},
 															{name: text.combiBranchCode, sortable: true}, {name: text.combiBranchName, sortable: true},
 															{name: text.subBranchCode, sortable: true}, {name: text.subBranchName, sortable: true},
 	                            {name: text.coefficient, sortable: true}

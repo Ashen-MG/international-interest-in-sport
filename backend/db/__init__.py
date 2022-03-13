@@ -292,10 +292,10 @@ class Database:
 
         Returns:
             dict: dict with one key = success, its value is list of dicts, each dict contains
-            keys country_name, points, order
+            keys country_code, country_name, points, order
         """
 
-        sql = "select c.name, suc.points, suc.orders from success suc cross join sport sp " \
+        sql = "select c.code, c.name, suc.points, suc.orders from success suc cross join sport sp " \
               "join country c on suc.sport_id = sp.id and sp.code = %(sport_code)s " \
               "and suc.country_id = c.id order by suc.orders;"
         result = {"success": []}
@@ -305,7 +305,7 @@ class Database:
                     cursor.execute(sql, {"sport_code": sport_code})
                     tmp = cursor.fetchone()
                     while tmp:
-                        result["success"].append({"country_name": tmp[0], "points": tmp[1], "order": tmp[2]})
+                        result["success"].append({"country_code": tmp[0], "country_name": tmp[1], "points": tmp[2], "order": tmp[3]})
                         tmp = cursor.fetchone()
             # self._releaseConnection(dbConn)
         except psycopg2.DatabaseError as error:

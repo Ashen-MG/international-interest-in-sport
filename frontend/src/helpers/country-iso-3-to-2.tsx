@@ -1,3 +1,12 @@
+import {ReactNode} from "react";
+
+/** @param countryCode: 3-letter code (ISO 3166-1 alpha-3) */
+export const getCountryImageURL = (countryCode: string, countryName: string = ""): ReactNode => {
+	countryCode = countryISOMapping[countryCode]?.toLowerCase();
+	return <img src={`https://flagcdn.com/32x24/${countryCode}.png`} alt={countryName}/>;
+}
+
+/** Mapping 'ISO 3166-1 alpha-3 country codes' to 'ISO 3166-1 alpha-2 country codes'. */
 export const countryISOMapping: {[key: string]: string} = {
 	AFG: "AF",
 	ALA: "AX",
