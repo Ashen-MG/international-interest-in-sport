@@ -87,7 +87,8 @@ export const text = {
 		oldBranchCode: "Starý kód odvetvia",
 		newBranchCode: "Nový kód odvetvia",
 		oldBranchTitle: "Starý názov odvetvia",
-		newBranchTitle: "Nový názov odvetvia"
+		newBranchTitle: "Nový názov odvetvia",
+		flag: "Vlajka"
 	}
 	,
 	en: {
@@ -176,7 +177,8 @@ export const text = {
 		oldBranchCode: "Old branch code",
 		newBranchCode: "New branch code",
 		oldBranchTitle: "Old branch title",
-		newBranchTitle: "New branch title"
+		newBranchTitle: "New branch title",
+		flag: "Flag"
 	}
 }
 

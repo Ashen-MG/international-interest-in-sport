@@ -11,8 +11,9 @@ import {Button, Form} from "react-bootstrap";
 import {ChoiceState} from "../../components/choicestate/ChoiceState";
 import {CSVLink} from "react-csv";
 import {Download} from "react-bootstrap-icons";
-import {Table} from "../../../components/table/Table";
+import {Table, TableRowsType} from "../../../components/table/Table";
 import {MapShow} from "../../components/map/Map";
+import {getCountryImageURL} from "../../../helpers/country-iso-3-to-2";
 
 /** This page is used to show the interconnectedness of individual countries */
 export const Interconnectness = () => {
@@ -43,7 +44,7 @@ export const Interconnectness = () => {
 	const [interconnectednessTypeOptions, setInterconnectednessTypeOptions] = useState<{value: number, label: string}[]>([]);
 	const [interconnectednessOption, setInterconnectednessOption] = useState<number>(1);
 	const [interconnectnesses, setInterconnectness] = useState<interconnectnessType[]>();
-	const [rowInterconnectness, setRowInterconnectness] = useState<(number | string)[][]>([]);
+	const [rowInterconnectness, setRowInterconnectness] = useState<TableRowsType>([]);
 	/** useEffect for loading interconnectedness types */
 	useEffect(() => {
 		if (interconnectednessType !== undefined) {
@@ -73,7 +74,9 @@ export const Interconnectness = () => {
 			onSuccess: (response) => {
 				const serverData = response.data.data;
 				setInterconnectness(serverData.interconnectness);
-				setRowInterconnectness(serverData.interconnectness.map((i) => [i.code, i.country, i.value, i.type]))
+				setRowInterconnectness(serverData.interconnectness.map((i) => [
+					{element: getCountryImageURL(i.code, i.country), value: ""}, i.code, i.country, i.value, i.type]
+				));
 			},
 			onError: (error) => {
 				console.log(error);
@@ -139,8 +142,8 @@ export const Interconnectness = () => {
 			<div className="inter">
 				<Switch>
 					<Route path="/interconnectness/table">
-						<Table columnNames={[{name: "Code", sortable: true}, {name: "Country", sortable: true}, {
-							name: "Value", sortable: true}, {name: "Type", sortable: true }]}
+						<Table columnNames={[{name: "Flag", sortable: false}, {name: "Code", sortable: true},
+							{name: "Country", sortable: true}, {name: "Value", sortable: true}, {name: "Type", sortable: true }]}
 							   rows={rowInterconnectness}/>
 					</Route>
 					<Route path="/interconnectness/map">
