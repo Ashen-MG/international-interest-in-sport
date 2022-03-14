@@ -51,8 +51,8 @@ export const Ranking = () => {
 
 	return (
 		<>
-			<h1 className="mt-3 mb-4"> Ranking <Info label="What is Ranking" input="The page displays the global (universal) order of sports
-            (order, sport,points and code )."/></h1>
+			<h1 className="mt-3 mb-4"> International Importance <Info label="What is Ranking" input="Results are displayed with tree decimal digits, the coefficients are calculated with 10 decimal digits and sorted accordingly. The exact values can be viewed in data export."/></h1>
+			<h5>The coefficient measures the interational importance of individual sports for a selected particular country. It sums the estimatd importantce in all included foreign countries for the particular country weighted by their relative country influence.</h5> <br></br>
 			<div>
 				<Form.Label><h4>Country</h4></Form.Label>
 				<Select
@@ -67,8 +67,8 @@ export const Ranking = () => {
 				<Button variant="outline-primary mt-md-2 mb-md-2"><CSVLink className='button' filename={"ranking"+option[1]} data={rowChart}><Download size={25} /> Export data</CSVLink></Button>{' '}
 			</div>
 			<div>
-				<Table columnNames={[{name: "Order", sortable: true}, {name: "Sport", sortable: true},
-														 {name: "Points", sortable: true}, {name: "Code", sortable: true}
+				<Table columnNames={[{name: "Rank", sortable: true}, {name: "Sport", sortable: true},
+														 {name: "Ranking coefficient", sortable: true}, {name: "Sport Code", sortable: true}
 				]}
 				       rows={rowChart}
 				/>
