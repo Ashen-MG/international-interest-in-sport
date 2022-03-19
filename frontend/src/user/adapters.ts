@@ -6,6 +6,7 @@ import {AxiosResponse} from "axios";
 //------------- For the success ---------
 
 export type successType = {
+    country_code: string,
     country_name: string,
     points: number,
     order: number

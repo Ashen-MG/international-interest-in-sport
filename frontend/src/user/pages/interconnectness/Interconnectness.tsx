@@ -11,8 +11,9 @@ import {Button, Form} from "react-bootstrap";
 import {ChoiceState} from "../../components/choicestate/ChoiceState";
 import {CSVLink} from "react-csv";
 import {Download} from "react-bootstrap-icons";
-import {Table} from "../../../components/table/Table";
+import {Table, TableRowsType} from "../../../components/table/Table";
 import {MapShow} from "../../components/map/Map";
+import {getCountryImageURL} from "../../../helpers/country-iso-3-to-2";
 
 /** This page is used to show the interconnectedness of individual countries */
 export const Interconnectness = () => {
@@ -43,8 +44,8 @@ export const Interconnectness = () => {
 	const [interconnectednessTypeOptions, setInterconnectednessTypeOptions] = useState<{value: number, label: string}[]>([]);
 	const [interconnectednessOption, setInterconnectednessOption] = useState<number>(1);
 	const [interconnectnesses, setInterconnectness] = useState<interconnectnessType[]>();
-	const [rowInterconnectness, setRowInterconnectness] = useState<(number | string)[][]>([]);
-
+	const [rowInterconnectness, setRowInterconnectness] = useState<TableRowsType>([]);
+  
 	/** useEffect for loading interconnectedness types */
 	useEffect(() => {
 		if (interconnectednessType !== undefined) {
@@ -75,7 +76,9 @@ export const Interconnectness = () => {
 			onSuccess: (response) => {
 				const serverData = response.data.data;
 				setInterconnectness(serverData.interconnectness);
-				setRowInterconnectness(serverData.interconnectness.map((i) => [i.code, i.country, i.value, i.type]))
+				setRowInterconnectness(serverData.interconnectness.map((i) => [
+					{element: getCountryImageURL(i.code, i.country), value: ""}, i.code, i.country, i.value, i.type]
+				));
 			},
 			onError: (error) => {
 				console.log(error);
@@ -90,12 +93,14 @@ export const Interconnectness = () => {
 
 	return (<>
 		<header>
-			<h1 className="mt-3 mb-4"> Interconnectedness <Info label="What is Ranking" input="The user has the option to choose the country and type of connection (economic, non-economic).
-             Depending on the user's choice, the page displays either a map with countries and numeric values
-              or a list of countries with weights that indicate how high the country according to the selected country and connection type."/></h1>
+			<h1 className="mt-3 mb-4"> Country Influence <Info label="What is Country Influence" input="The coefficients measure the relative influence of other countries on the selected particular country.
+			The values depend on mutual export and import between the particular country and all other
+			included countries, on the distance between the countries, on neighbourship of countries,
+			on common or similar language, and on common history. Economic, non-economic and combined
+			(averaged economic and non-economic) relative influence can be viewed."/></h1>
 		</header>
 		<div>
-			<h4> Data displaying</h4>
+			<h4> Display mode</h4>
 
 			<Select className="mb-3"
 					id="setview"
@@ -119,7 +124,7 @@ export const Interconnectness = () => {
 							setCountryOption([selectedOption.value, selectedOption.label]) }}
 				/>
 
-				<Form.Label><h4>Interconnectedness type</h4></Form.Label>
+				<Form.Label><h4>Influence type</h4></Form.Label>
 				<Select
 					id="setinterconnectness"
 					options={interconnectednessTypeOptions}
@@ -141,8 +146,8 @@ export const Interconnectness = () => {
 			<div className="inter">
 				<Switch>
 					<Route path="/influence/table">
-						<Table columnNames={[{name: "Code", sortable: true}, {name: "Country", sortable: true}, {
-							name: "Value", sortable: true}, {name: "Type", sortable: true }]}
+						<Table columnNames={[{name: "Flag", sortable: false}, {name: "Code", sortable: true},
+							{name: "Country", sortable: true}, {name: "Value", sortable: true}, {name: "Type", sortable: true }]}
 							   rows={rowInterconnectness}/>
 					</Route>
 					<Route path="/influence/map">

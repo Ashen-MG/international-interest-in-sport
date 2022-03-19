@@ -14,6 +14,7 @@ import config from "../../../config";
 const acceptedFundingFileExtensions = ".csv";
 const acceptedSuccessFileExtensions = ".xlsx, .xlsm, .xltx, .xltm";
 const acceptedInterconnectednessFileExtensions = acceptedSuccessFileExtensions;
+const acceptedBGSFileExtensions = acceptedSuccessFileExtensions;
 
 interface UploadFundingError {
 	message: string,
@@ -30,6 +31,7 @@ export const UploadData = () => {
 	const [fundingFile, setFundingFile] = useState<dropzoneFileProp[]>([]);
 	const [successFile, setSuccessFile] = useState<dropzoneFileProp[]>([]);
 	const [interconnectednessFile, setInterconnectednessFile] = useState<dropzoneFileProp[]>([]);
+	const [bgsFile, setBgsFile] = useState<dropzoneFileProp[]>([]);
 
 	const {countries: responseCountries} = useCountries("en");
 	const [countries, setCountries] = useState<{value: string, label: string}[]>([]);
@@ -59,7 +61,7 @@ export const UploadData = () => {
 	);
 
 	const handleUploadSubmit = () => {
-		if (fundingFile.length === 0 && successFile.length === 0 && interconnectednessFile.length === 0)
+		if (fundingFile.length === 0 && successFile.length === 0 && interconnectednessFile.length === 0 && bgsFile.length === 0)
 			createSnackbar("Please upload at least one source.", SnackTypes.warn);
 		else if (fundingFile.length !== 0 && (selectedCountry === undefined || selectedCurrency === undefined))
 			createSnackbar("Select country and currency.", SnackTypes.warn);
@@ -67,9 +69,13 @@ export const UploadData = () => {
 			createSnackbar("Select interconnectedness type.", SnackTypes.warn);
 		else {
 			uploadMutation.mutate({
-				fundingFile: fundingFile[0]?.file, successFile: successFile[0]?.file,
-				interconnectednessFile: interconnectednessFile[0]?.file, countryCode: selectedCountry,
-				currency: selectedCurrency, interconnectednessType: selectedInterconnectednessType
+				fundingFile: fundingFile[0]?.file,
+				successFile: successFile[0]?.file,
+				interconnectednessFile: interconnectednessFile[0]?.file,
+				bgsFile: bgsFile[0]?.file,
+				countryCode: selectedCountry,
+				currency: selectedCurrency,
+				interconnectednessType: selectedInterconnectednessType
 			});
 		}
 	}
@@ -218,6 +224,29 @@ export const UploadData = () => {
             Delete uploaded files
           </a>
         </div>
+				}
+			</CenteredRow>
+		</section>
+		<section>
+			<CenteredRow as="header">
+				<h2>Upload BGS data</h2>
+				<a href={`${config.API_URL}/static/BGS.xlsx`}>download sample file</a>
+			</CenteredRow>
+			<CenteredRow as="section">
+				<Dropzone accept={acceptedBGSFileExtensions} files={bgsFile} setFiles={setBgsFile} lang="en"/>
+				{ bgsFile.length !== 0 &&
+					<div className={`w-100 mt-2`}>
+						<span>Uploaded files: </span>
+						<span>
+								{ bgsFile.map((file) => file.file.name).join(", ") }
+							</span>
+						<a href="#"
+						   className={`float-end`}
+						   onClick={ () => setBgsFile([]) }
+						>
+							Delete uploaded files
+						</a>
+					</div>
 				}
 			</CenteredRow>
 		</section>
