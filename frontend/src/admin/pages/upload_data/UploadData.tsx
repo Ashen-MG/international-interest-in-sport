@@ -5,7 +5,7 @@ import createSnackbar, {SnackTypes} from "../../../components/snackbar/Snackbar"
 import {useCountries, useMutationWithNotifications} from "../../../app/hooks";
 import {apiUploadFiles} from "../../adapters";
 import {currencies} from "../../../data/active_currency_codes";
-import {Col, Form, Row} from "react-bootstrap";
+import {Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import Select from "react-select";
 import {useInterconnectednessType} from "../../../user/hooks";
 import {RowToSuggestion, RowWithSuggestion, Suggestions} from "admin_secretary_shared/components/upload_funding_data/Suggestions";
@@ -15,6 +15,7 @@ const acceptedFundingFileExtensions = ".csv";
 const acceptedSuccessFileExtensions = ".xlsx, .xlsm, .xltx, .xltm";
 const acceptedInterconnectednessFileExtensions = acceptedSuccessFileExtensions;
 const acceptedBGSFileExtensions = acceptedSuccessFileExtensions;
+
 
 interface UploadFundingError {
 	message: string,
@@ -43,6 +44,11 @@ export const UploadData = () => {
 	const {interconnectednessType} = useInterconnectednessType("en");
 	const [interconnectednessOptions, setInterconnectednessOptions] = useState<{value: number, label: string}[]>([]);
 	const [selectedInterconnectednessType, setSelectedInterconnectednessType] = useState<number | undefined>();
+
+	const [fundingSource, setFundingSource] = useState<string | undefined>();
+	const [successSource, setSuccessSource] = useState<string | undefined>();
+	const [interconnSource, setInterconnSource] = useState<string | undefined>();
+	const [bgsSource, setBGSSource] = useState<string | undefined>();
 
 	useEffect(() => {
 		setCountries(responseCountries.map((country) => { return {
@@ -144,6 +150,19 @@ export const UploadData = () => {
 						/>
 					</Col>
 				</Row>
+				<Row>
+					<Form.Group as={Row} className="mt-4" controlId="formFundingSource">
+						<Col>
+							<FloatingLabel controlId="floatingFundingSource" label="Enter Funding Data Source">
+								<Form.Control type="text"
+											  value={fundingSource}
+											  onChange={(e) =>
+												  setFundingSource((e.currentTarget as HTMLInputElement).value)}
+								/>
+							</FloatingLabel>
+						</Col>
+					</Form.Group>
+				</Row>
 			</CenteredRow>
 			<CenteredRow as="section">
 				<Dropzone accept={acceptedFundingFileExtensions} files={fundingFile} setFiles={setFundingFile} lang="en"/>
@@ -172,6 +191,19 @@ export const UploadData = () => {
 			<CenteredRow as="header">
 				<h2>Upload success data</h2>
 				<a href={`${config.API_URL}/static/all_sports_ranking_2019.xlsx`}>download sample file</a>
+			</CenteredRow>
+			<CenteredRow>
+				<Form.Group as={Row} className="mt-4" controlId="formSuccessSource">
+					<Col>
+						<FloatingLabel controlId="floatingFundingSource" label="Enter Success Data Source">
+							<Form.Control type="text"
+										  value={successSource}
+										  onChange={(e) =>
+											  setSuccessSource((e.currentTarget as HTMLInputElement).value)}
+							/>
+						</FloatingLabel>
+					</Col>
+				</Form.Group>
 			</CenteredRow>
 			<CenteredRow as="section">
 				<Dropzone accept={acceptedSuccessFileExtensions} files={successFile} setFiles={setSuccessFile} lang="en"/>
@@ -208,6 +240,19 @@ export const UploadData = () => {
 						/>
 					</Col>
 				</Row>
+				<Row>
+					<Form.Group as={Row} className="mt-4" controlId="formInterconnSource">
+						<Col>
+							<FloatingLabel controlId="floatingFundingSource" label="Enter Interconnectedness Data Source">
+								<Form.Control type="text"
+											  value={interconnSource}
+											  onChange={(e) =>
+												  setInterconnSource((e.currentTarget as HTMLInputElement).value)}
+								/>
+							</FloatingLabel>
+						</Col>
+					</Form.Group>
+				</Row>
 			</CenteredRow>
 			<CenteredRow as="section">
 				<Dropzone accept={acceptedInterconnectednessFileExtensions} files={interconnectednessFile} setFiles={setInterconnectednessFile} lang="en"/>
@@ -232,6 +277,19 @@ export const UploadData = () => {
 				<h2>Upload BGS data</h2>
 				<a href={`${config.API_URL}/static/BGS.xlsx`}>download sample file</a>
 			</CenteredRow>
+			<Row>
+				<Form.Group as={Row} className="mt-4" controlId="formBGSSource">
+					<Col>
+						<FloatingLabel controlId="floatingBGSSource" label="Enter BGS Data Source">
+							<Form.Control type="text"
+										  value={bgsSource}
+										  onChange={(e) =>
+											  setBGSSource((e.currentTarget as HTMLInputElement).value)}
+							/>
+						</FloatingLabel>
+					</Col>
+				</Form.Group>
+			</Row>
 			<CenteredRow as="section">
 				<Dropzone accept={acceptedBGSFileExtensions} files={bgsFile} setFiles={setBgsFile} lang="en"/>
 				{ bgsFile.length !== 0 &&

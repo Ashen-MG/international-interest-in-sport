@@ -142,7 +142,7 @@ export const UploadData = () => {
 					/>
 				</Col>
 			</Row>
-			<Form.Group as={Row} className="mt-4" controlId="formCountryCode">
+			<Form.Group as={Row} className="mt-4" controlId="formFundingSource">
 				<Col>
 					<FloatingLabel controlId="floatingFundingSource" label="Zadajte zdroj dát">
 						<Form.Control type="text"
