@@ -1,5 +1,5 @@
 import Select from "react-select";
-import {Col, Row, Form, Button} from "react-bootstrap";
+import {Col, Row, Form, Button, FloatingLabel} from "react-bootstrap";
 import {Dropzone} from "components/drag_and_drop/Dropzone";
 import React, {useEffect, useState} from "react";
 import {dropzoneFileProp} from "components/drag_and_drop/Dropzone";
@@ -41,6 +41,8 @@ export const UploadData = () => {
 	const [numOfRealSuggestions, setNumOfRealSuggestions] = useState<number>(0);
 
 	const corrections = useAppSelector((state: RootState) => state.secretaryUploadCorrections.corrections);
+
+	const [fundingSource, setFundingSource] = useState<string | undefined>();
 
 	useEffect(() => {
 		setCountries(responseCountries.map((country) => { return {
@@ -140,6 +142,18 @@ export const UploadData = () => {
 					/>
 				</Col>
 			</Row>
+			<Form.Group as={Row} className="mt-4" controlId="formCountryCode">
+				<Col>
+					<FloatingLabel controlId="floatingFundingSource" label="Zadajte zdroj dát">
+						<Form.Control type="text"
+									  placeholder="Funding Data Source"
+									  value={fundingSource}
+									  onChange={(e) =>
+										  setFundingSource((e.currentTarget as HTMLInputElement).value)}
+						/>
+					</FloatingLabel>
+				</Col>
+			</Form.Group>
 			<Row className={`mt-4`}>
 				<Col>
 					<Form.Label>Súbory</Form.Label>
