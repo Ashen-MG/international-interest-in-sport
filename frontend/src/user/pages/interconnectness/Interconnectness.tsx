@@ -91,12 +91,14 @@ export const Interconnectness = () => {
 
 	return (<>
 		<header>
-			<h1 className="mt-3 mb-4"> Interconnectedness <Info label="What is Ranking" input="The user has the option to choose the country and type of connection (economic, non-economic).
-             Depending on the user's choice, the page displays either a map with countries and numeric values
-              or a list of countries with weights that indicate how high the country according to the selected country and connection type."/></h1>
+			<h1 className="mt-3 mb-4"> Country Influence <Info label="What is Country Influence" input="The coefficients measure the relative influence of other countries on the selected particular country.
+			The values depend on mutual export and import between the particular country and all other
+			included countries, on the distance between the countries, on neighbourship of countries,
+			on common or similar language, and on common history. Economic, non-economic and combined
+			(averaged economic and non-economic) relative influence can be viewed."/></h1>
 		</header>
 		<div>
-			<h4> Data displaying</h4>
+			<h4> Display mode</h4>
 
 			<Select className="mb-3"
 					id="setview"
@@ -120,7 +122,7 @@ export const Interconnectness = () => {
 							setCountryOption([selectedOption.value, selectedOption.label]) }}
 				/>
 
-				<Form.Label><h4>Interconnectedness type</h4></Form.Label>
+				<Form.Label><h4>Influence type</h4></Form.Label>
 				<Select
 					id="setinterconnectness"
 					options={interconnectednessTypeOptions}

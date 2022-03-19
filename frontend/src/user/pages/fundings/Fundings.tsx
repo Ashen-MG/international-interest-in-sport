@@ -15,6 +15,7 @@ export const Fundings = () => {
     
     const {countries} = useCountries("en");
     const [rowFundings, setRowFunding] = useState<(number | string)[][]>([]);
+    const [rowCurrency, setRowCurrency] = useState<(number | string)[][]>([]);
     const [options, setOptions] = useState<{value: string, label: string}[]>([]);
     const [option, setOption] = useState<string[]>(["",""]);
     /** useEffect for loading countries */
@@ -35,7 +36,8 @@ export const Fundings = () => {
         {
             onSuccess: (response) => {
                 const serverData = response.data.data;
-                setRowFunding((serverData.funding.map((f) => [f.branch_id, formatLongNumber(f.absolute_funding), f.currency])));
+                setRowFunding((serverData.funding.map((f) => [f.branch_id, formatLongNumber(f.absolute_funding)])));
+                setRowCurrency((serverData.funding.map((f) => [f.currency])));
             },
             onError: (error) => {
                 console.log(error);
@@ -50,9 +52,10 @@ export const Fundings = () => {
 
     return (
         <>
-            <header><h1 className="mt-3 mb-4"> Fundings <Info label="What is Funding" input="
+            <header><h1 className="mt-3 mb-4"> Funding <Info label="What is Funding" input="
             On this page, after selecting a country, it is displayed as a given funding between individual sports.
             The branches the columns will be: name of the sport,  amount (money) in the local currency of the given country and currency"/></h1></header>
+            <h5>The total estimate value of national funding of individual sports.</h5> <br></br>
 
             <div>
 
@@ -69,13 +72,12 @@ export const Fundings = () => {
                 />
 
                 <ChoiceState state={option[1]} />
-
                 <Button variant="outline-primary mt-md-2 mb-md-2"><CSVLink className='button' filename={"funding"+option[1]} data={rowFundings}><Download size={25} /> Export data</CSVLink></Button>{' '}
             </div>
             <div>
-                <Table columnNames={[{name: "Sport", sortable: true}, {name: "Amount", sortable: false, alignRight: true}, {
-                    name: "Currency", sortable: true
-                }]}
+
+                <h5>Funding is displayed in the local currency: <b>{rowCurrency[0]}</b></h5>
+                <Table columnNames={[{name: "Sport", sortable: true}, {name: "Amount (" + rowCurrency[0] + ")", sortable: false, alignRight: true}]}
                        rows={rowFundings}/>
             </div>
         </>
