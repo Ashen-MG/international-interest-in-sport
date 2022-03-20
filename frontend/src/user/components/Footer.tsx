@@ -38,25 +38,30 @@ export const Footer = () => {
           </div>
           {/* Column4 */}
           <div className="col">
-            <h4>Source Code</h4>
-            <ul className={`list-unstyled ${styles.listUnstyled}`}>
-              <li><a href = "https://github.com/TIS2021-FMFI/zaujem-o-sport">github</a></li>
-            </ul>
+            <div className="row">
+              <h4>Source Code</h4>
+              <ul className={`list-unstyled ${styles.listUnstyled}`}>
+                <li><a href = "https://github.com/TIS2021-FMFI/zaujem-o-sport">github</a></li>
+              </ul>
+            </div>
+            {/* Column5 */}
+            <div className="row">
+              <h4>Project Methodology</h4>
+              <ul className={`list-unstyled ${styles.listUnstyled}`}>
+                <li><a href = "https://github.com/TIS2021-FMFI/zaujem-o-sport">link</a></li>
+              </ul>
+            </div>
+            {/* Column6 */}
+            <div className="row">
+              <h4>Contact</h4>
+              <ul className={`list-unstyled ${styles.listUnstyled}`}>
+                <li>richard.kollar@fmph.uniba.sk</li>
+              </ul>
+            </div>
           </div>
-          {/* Column5 */}
-          <div className="col">
-            <h4>Project Methodology</h4>
-            <ul className={`list-unstyled ${styles.listUnstyled}`}>
-              <li><a href = "https://github.com/TIS2021-FMFI/zaujem-o-sport">link</a></li>
-            </ul>
-          </div>
-          {/* Column6 */}
-          <div className="col">
-            <h4>Contact</h4>
-            <ul className={`list-unstyled ${styles.listUnstyled}`}>
-              <li>richard.kollar@fmph.uniba.sk</li>
-            </ul>
-          </div>
+        </div>
+
+        <div className="row">
           {/* Column7 */}
           <div className="col">
             <ul className={`list-unstyled ${styles.listUnstyled}`}>
