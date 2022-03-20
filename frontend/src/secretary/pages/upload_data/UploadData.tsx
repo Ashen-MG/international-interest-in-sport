@@ -104,11 +104,11 @@ export const UploadData = () => {
 	}, [uploadMutation.error]);
 
 	const handleSubmit = () => {
-		if (selectedCountry === undefined || selectedCurrency === undefined)
-			createSnackbar("Zvoľte krajinu a menu.", SnackTypes.warn);
+		if (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === undefined)
+			createSnackbar("Zvoľte krajinu, menu a zadajte zdroj.", SnackTypes.warn);
 		else if (files.length === 1)
 			uploadMutation.mutate({csvFile: files[0].file, countryCode: selectedCountry, currency: selectedCurrency,
-																		 corrections: corrections});
+											corrections: corrections, fundingSource: fundingSource});
 		else
 			createSnackbar("Najskôr je potrebné nahrať dáta vo formáte csv.", SnackTypes.warn);
 	}

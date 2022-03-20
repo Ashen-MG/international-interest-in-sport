@@ -18,6 +18,7 @@ class Funding(SwaggerView):
 		countryCode = requestJSON.get("countryCode")
 		currency = requestJSON.get("currency")
 		file = request.files["csvFile"]
+		fundingSource = requestJSON.get("fundingSource")
 
 		if not file:
 			return {"message": "Missing required parameter: `csvFile`.", "data": {}}, 400
@@ -27,6 +28,8 @@ class Funding(SwaggerView):
 			return {"message": "Missing required parameter: `countryCode`.", "data": {}}, 400
 		if not currency:
 			return {"message": "Missing required parameter: `currency`.", "data": {}}, 400
+		if not fundingSource:
+			return {"message": "Missing required parameter: `fundingSource`.", "data": {}}, 400
 
 		DB.createDatabaseBackup()
 
@@ -39,6 +42,7 @@ class Funding(SwaggerView):
 
 		if len(suggestions) == 0:
 			p.saveResults(countryCode)
+			DB.saveFundingSource(countryCode, fundingSource)
 			return {"message": "ok"}
 		else:
 			return {"message": "fail", "suggestions": suggestions}, 400

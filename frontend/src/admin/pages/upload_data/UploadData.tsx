@@ -69,8 +69,8 @@ export const UploadData = () => {
 	const handleUploadSubmit = () => {
 		if (fundingFile.length === 0 && successFile.length === 0 && interconnectednessFile.length === 0 && bgsFile.length === 0)
 			createSnackbar("Please upload at least one source.", SnackTypes.warn);
-		else if (fundingFile.length !== 0 && (selectedCountry === undefined || selectedCurrency === undefined))
-			createSnackbar("Select country and currency.", SnackTypes.warn);
+		else if (fundingFile.length !== 0 && (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === undefined))
+			createSnackbar("Select country, currency and source.", SnackTypes.warn);
 		else if (interconnectednessFile.length !== 0 && selectedInterconnectednessType === undefined)
 			createSnackbar("Select interconnectedness type.", SnackTypes.warn);
 		else {
@@ -81,7 +81,8 @@ export const UploadData = () => {
 				bgsFile: bgsFile[0]?.file,
 				countryCode: selectedCountry,
 				currency: selectedCurrency,
-				interconnectednessType: selectedInterconnectednessType
+				interconnectednessType: selectedInterconnectednessType,
+				foundingSource : fundingSource
 			});
 		}
 	}
