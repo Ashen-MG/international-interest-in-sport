@@ -68,11 +68,15 @@ export const UploadData = () => {
 
 	const handleUploadSubmit = () => {
 		if (fundingFile.length === 0 && successFile.length === 0 && interconnectednessFile.length === 0 && bgsFile.length === 0)
-			createSnackbar("Please upload at least one source.", SnackTypes.warn);
+			createSnackbar("Please upload at least one file.", SnackTypes.warn);
 		else if (fundingFile.length !== 0 && (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === ""))
-			createSnackbar("Select country, currency and source.", SnackTypes.warn);
-		else if (interconnectednessFile.length !== 0 && selectedInterconnectednessType === undefined)
-			createSnackbar("Select interconnectedness type.", SnackTypes.warn);
+			createSnackbar("Select country, currency and source for funding.", SnackTypes.warn);
+		else if (successFile.length !== 0 && successSource === "")
+			createSnackbar("Enter success source.", SnackTypes.warn);
+		else if (interconnectednessFile.length !== 0 && ( selectedInterconnectednessType === undefined || interconnSource === ""))
+			createSnackbar("Select interconnectedness type and enter it's source.", SnackTypes.warn);
+		else if (bgsFile.length !== 0 && bgsSource === "")
+			createSnackbar("Enter BGS source.", SnackTypes.warn);
 		else {
 			uploadMutation.mutate({
 				fundingFile: fundingFile[0]?.file,
@@ -82,7 +86,10 @@ export const UploadData = () => {
 				countryCode: selectedCountry,
 				currency: selectedCurrency,
 				interconnectednessType: selectedInterconnectednessType,
-				foundingSource : fundingSource
+				foundingSource : fundingSource,
+				successSource : successSource,
+				interconnSource : interconnSource,
+				bgsSource : bgsSource
 			});
 		}
 	}
@@ -193,7 +200,7 @@ export const UploadData = () => {
 				<h2>Upload success data</h2>
 				<a href={`${config.API_URL}/static/all_sports_ranking_2019.xlsx`}>download sample file</a>
 			</CenteredRow>
-			<CenteredRow>
+			<CenteredRow className="mb-4">
 				<Form.Group as={Row} className="mt-4" controlId="formSuccessSource">
 					<Col>
 						<FloatingLabel controlId="floatingFundingSource" label="Enter Success Data Source">
@@ -278,6 +285,7 @@ export const UploadData = () => {
 				<h2>Upload BGS data</h2>
 				<a href={`${config.API_URL}/static/BGS.xlsx`}>download sample file</a>
 			</CenteredRow>
+			<CenteredRow className="mb-4">
 			<Row>
 				<Form.Group as={Row} className="mt-4" controlId="formBGSSource">
 					<Col>
@@ -291,6 +299,7 @@ export const UploadData = () => {
 					</Col>
 				</Form.Group>
 			</Row>
+			</CenteredRow>
 			<CenteredRow as="section">
 				<Dropzone accept={acceptedBGSFileExtensions} files={bgsFile} setFiles={setBgsFile} lang="en"/>
 				{ bgsFile.length !== 0 &&
