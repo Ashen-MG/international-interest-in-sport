@@ -45,10 +45,10 @@ export const UploadData = () => {
 	const [interconnectednessOptions, setInterconnectednessOptions] = useState<{value: number, label: string}[]>([]);
 	const [selectedInterconnectednessType, setSelectedInterconnectednessType] = useState<number | undefined>();
 
-	const [fundingSource, setFundingSource] = useState<string | undefined>();
-	const [successSource, setSuccessSource] = useState<string | undefined>();
-	const [interconnSource, setInterconnSource] = useState<string | undefined>();
-	const [bgsSource, setBGSSource] = useState<string | undefined>();
+	const [fundingSource, setFundingSource] = useState<string>("");
+	const [successSource, setSuccessSource] = useState<string>("");
+	const [interconnSource, setInterconnSource] = useState<string>("");
+	const [bgsSource, setBGSSource] = useState<string>("");
 
 	useEffect(() => {
 		setCountries(responseCountries.map((country) => { return {
@@ -69,7 +69,7 @@ export const UploadData = () => {
 	const handleUploadSubmit = () => {
 		if (fundingFile.length === 0 && successFile.length === 0 && interconnectednessFile.length === 0 && bgsFile.length === 0)
 			createSnackbar("Please upload at least one source.", SnackTypes.warn);
-		else if (fundingFile.length !== 0 && (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === undefined))
+		else if (fundingFile.length !== 0 && (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === ""))
 			createSnackbar("Select country, currency and source.", SnackTypes.warn);
 		else if (interconnectednessFile.length !== 0 && selectedInterconnectednessType === undefined)
 			createSnackbar("Select interconnectedness type.", SnackTypes.warn);
