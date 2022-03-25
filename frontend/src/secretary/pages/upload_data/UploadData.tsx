@@ -42,7 +42,7 @@ export const UploadData = () => {
 
 	const corrections = useAppSelector((state: RootState) => state.secretaryUploadCorrections.corrections);
 
-	const [fundingSource, setFundingSource] = useState<string | undefined>();
+	const [fundingSource, setFundingSource] = useState<string>("");
 
 	useEffect(() => {
 		setCountries(responseCountries.map((country) => { return {
@@ -104,7 +104,7 @@ export const UploadData = () => {
 	}, [uploadMutation.error]);
 
 	const handleSubmit = () => {
-		if (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === undefined)
+		if (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === "")
 			createSnackbar("Zvoľte krajinu, menu a zadajte zdroj.", SnackTypes.warn);
 		else if (files.length === 1)
 			uploadMutation.mutate({csvFile: files[0].file, countryCode: selectedCountry, currency: selectedCurrency,
