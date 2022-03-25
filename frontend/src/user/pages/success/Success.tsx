@@ -15,6 +15,7 @@ export const Success = () => {
 	const [sports, setSport] = useState<sportType[]>();
 	const [rowSuccess, setRowSuccess] = useState<TableRowsType>([]);
 	const [option, setOption] = useState<string[]>(["",""]);
+	const [source, setSource] = useState<string>("");
 
 	/** Query for displaying sports. */
 	const {isLoading} = useQuery("list_sports2", apiListSport, {
@@ -59,13 +60,19 @@ export const Success = () => {
 	}, [option]);
 
 
+	let info = `After selecting a sport, this page displays a table showing 
+        the ranking of countries according to the number of points earned in the sport. Missing countries in the ranking are not included in the analysis. 
+        See the source for the full rankings. Year of the dataset is ` + source + "."
+
+
+
 	return (
 		<>
 			<header>
-				<h1 className="mt-3 mb-4"> Success <Info label="What is Success" input="After selecting a sport, this page displays a table showing
-            the ranking of countries according to the number of points earned in the sport.
-            Source: https://www.worldsportranking.info/sports-list
-            "/></h1>
+				<h1 className="mt-3 mb-4"> Sport Ranking <Info label="Info" input={info}/></h1>
+				<h2>
+					Sport ranking is calculated by Nadim Nassif, Andrew Al-Nghayoui and Maya Gabriel. See the <a href = "https://www.worldsportranking.info/sports-list">source</a> for the methodology.
+				</h2>
 			</header>
 
 			<div>
