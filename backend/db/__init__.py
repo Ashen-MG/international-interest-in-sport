@@ -2058,12 +2058,12 @@ class Database:
                 self._releaseConnection(dbConn)
             self.logger.error(error)
 
-    def getUrlByCountry(self, country_id: id) -> str:
-        """ Get url for country_id
+    def getFundingSource(self, country_id: id) -> str:
+        """ Get funding source for country
         Args:
             country_id (id): id of selected country
         Returns:
-            string: url of funding for selected country
+            string: funding source for selected country
         """
 
         sql = "select url from URL where country_id = %(country_id)s"
@@ -2087,12 +2087,12 @@ class Database:
                 self._releaseConnection(dbConn)
             self.logger.error(error)
 
-    def getUrlByType(self, type: str) -> str:
-        """ Get url for country_id
+    def getNonFundingSource(self, type: str) -> str:
+        """ Get non funding source
         Args:
-            type (str): type of url
+            type (str): type of source
         Returns:
-            string: url for wanted type
+            string: source of specified type
         """
 
         sql = "select url from URL where type = %(type)s"
@@ -2116,44 +2116,14 @@ class Database:
                 self._releaseConnection(dbConn)
             self.logger.error(error)
 
-    def addFundingUrl(self, country_id: id, url: str) -> bool:
-        """ Adding or updating funding url.
-            Args:
-                country_id (id): id of country url
-                url (str): new url
-            Returns:
-                bool: true/false whether url was successfully added
-        """
-        sql_check = "select * from URL where country_id = %(country_id)s"
-        sql_insert = "insert into URL(country_id, url) values (%(country_id)s, %(url)s);"
-        sql_update = "update URL set url= %(url)s where country_id = %(country_id)s"
-        try:
-            with self._getConnection() as dbConn:
-                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-                    cursor.execute(sql_check, {"country_id": country_id})
-                    tmp = cursor.fetchone()
-                    if tmp is not None:  # url for this country already exists
-                        cursor.execute(sql_update, {"country_id": country_id, "url": url})
-                    else:
-                        cursor.execute(sql_insert, {"country_id": country_id, "url": url})
-                    dbConn.commit()
-            if "dbConn" in locals():
-                self._releaseConnection(dbConn)
-            return True
-        except (psycopg2.DatabaseError, DataError) as error:
-            # print(error)
-            if "dbConn" in locals():
-                self._releaseConnection(dbConn)
-            self.logger.error(error)
-            return False
 
-    def addTypeUrl(self, type: str, url: str) -> bool:
-        """ Adding or updating url by type.
+    def saveNonFundingSource(self, type: str, url: str) -> bool:
+        """ Save or update non funding source.
             Args:
-                type (str): type of url
-                url (str): new url
+                type (str): type of source
+                url (str): new source
             Returns:
-                bool: true/false whether url was successfully added
+                bool: true/false whether source was successfully saved/updated
         """
         sql_check = "select * from URL where type = %(type)s"
         sql_insert = "insert into URL(type, url) values (%(type)s, %(url)s);"
