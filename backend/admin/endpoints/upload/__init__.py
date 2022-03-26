@@ -48,7 +48,7 @@ class UploadView(SwaggerView):
 			if DB.deleteInterconnectednessTables(interconnectednessType):
 				for item in parsed:
 					item.save()
-				# DB.saveNonFundingSource("interconnSource", interconnSource)
+				DB.saveNonFundingSource("interconnSource", interconnSource)
 				#print(interconnSource)
 			else:
 				pass #TODO raise error alebo nieco ???
@@ -68,7 +68,7 @@ class UploadView(SwaggerView):
 					table.save()
 
 				#print(successSource)
-				# DB.saveNonFundingSource("successSource", successSource)
+				DB.saveNonFundingSource("successSource", successSource)
 
 		"""	
 		# TODO: list of unknown sports in parsed[1]
@@ -87,7 +87,7 @@ class UploadView(SwaggerView):
 					item.save()
 
 				#print(bgsSource)
-				# DB.saveNonFundingSource("bgsSource", bgsSource)
+				DB.saveNonFundingSource("bgsSource", bgsSource)
 
 
 		if fundingFile:

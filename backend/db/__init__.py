@@ -2075,6 +2075,9 @@ class Database:
                 dbConn.commit()
 
         except psycopg2.DatabaseError as error:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            self.logger.error(error)
 
     def getFundingSource(self, country_id: id) -> str:
         """ Get funding source for country
