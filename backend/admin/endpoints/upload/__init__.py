@@ -30,6 +30,11 @@ class UploadView(SwaggerView):
 		# correction = requestJSON.get("correction")
 		correction = []
 		interconnectednessType = requestJSON.get("interconnectednessType")
+		fundingSource = requestJSON.get("fundingSource")
+		successSource = requestJSON.get("successSource")
+		interconnSource = requestJSON.get("interconnSource")
+		bgsSource = requestJSON.get("bgsSource")
+
 
 		# At least one must be uploaded e.g. fundingFile could have been uploaded, but successFile and
 		# interconnectednessFile are going to be None.
@@ -43,6 +48,8 @@ class UploadView(SwaggerView):
 			if DB.deleteInterconnectednessTables(interconnectednessType):
 				for item in parsed:
 					item.save()
+				DB.saveNonFundingSource("interconnSource", interconnSource)
+				#print(interconnSource)
 			else:
 				pass #TODO raise error alebo nieco ???
 
@@ -60,6 +67,9 @@ class UploadView(SwaggerView):
 				for table in parsed[2:]:
 					table.save()
 
+				#print(successSource)
+				DB.saveNonFundingSource("successSource", successSource)
+
 		"""	
 		# TODO: list of unknown sports in parsed[1]
 		"""
@@ -75,6 +85,9 @@ class UploadView(SwaggerView):
 
 				for item in parsed:
 					item.save()
+
+				#print(bgsSource)
+				DB.saveNonFundingSource("bgsSource", bgsSource)
 
 
 		if fundingFile:
@@ -95,6 +108,7 @@ class UploadView(SwaggerView):
 
 			if len(suggestions) == 0:
 				p.saveResults(countryCode)
+				DB.saveFundingSource(countryCode, fundingSource)
 			else:
 				return {"message": "fail", "suggestions": suggestions}, 400
 

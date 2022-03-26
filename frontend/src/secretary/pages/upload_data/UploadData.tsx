@@ -1,5 +1,5 @@
 import Select from "react-select";
-import {Col, Row, Form, Button} from "react-bootstrap";
+import {Col, Row, Form, Button, FloatingLabel} from "react-bootstrap";
 import {Dropzone} from "components/drag_and_drop/Dropzone";
 import React, {useEffect, useState} from "react";
 import {dropzoneFileProp} from "components/drag_and_drop/Dropzone";
@@ -41,6 +41,8 @@ export const UploadData = () => {
 	const [numOfRealSuggestions, setNumOfRealSuggestions] = useState<number>(0);
 
 	const corrections = useAppSelector((state: RootState) => state.secretaryUploadCorrections.corrections);
+
+	const [fundingSource, setFundingSource] = useState<string>("");
 
 	useEffect(() => {
 		setCountries(responseCountries.map((country) => { return {
@@ -102,11 +104,11 @@ export const UploadData = () => {
 	}, [uploadMutation.error]);
 
 	const handleSubmit = () => {
-		if (selectedCountry === undefined || selectedCurrency === undefined)
-			createSnackbar("Zvoľte krajinu a menu.", SnackTypes.warn);
+		if (selectedCountry === undefined || selectedCurrency === undefined || fundingSource === "")
+			createSnackbar("Zvoľte krajinu, menu a zadajte zdroj.", SnackTypes.warn);
 		else if (files.length === 1)
 			uploadMutation.mutate({csvFile: files[0].file, countryCode: selectedCountry, currency: selectedCurrency,
-																		 corrections: corrections});
+											corrections: corrections, fundingSource: fundingSource});
 		else
 			createSnackbar("Najskôr je potrebné nahrať dáta vo formáte csv.", SnackTypes.warn);
 	}
@@ -140,6 +142,18 @@ export const UploadData = () => {
 					/>
 				</Col>
 			</Row>
+			<Form.Group as={Row} className="mt-4" controlId="formFundingSource">
+				<Col>
+					<FloatingLabel controlId="floatingFundingSource" label="Zadajte zdroj dát">
+						<Form.Control type="text"
+									  placeholder="Funding Data Source"
+									  value={fundingSource}
+									  onChange={(e) =>
+										  setFundingSource((e.currentTarget as HTMLInputElement).value)}
+						/>
+					</FloatingLabel>
+				</Col>
+			</Form.Group>
 			<Row className={`mt-4`}>
 				<Col>
 					<Form.Label>Súbory</Form.Label>

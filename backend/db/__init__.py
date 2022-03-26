@@ -899,7 +899,7 @@ class Database:
         """add best placement of specific country
                          Args:
                               country_id: id represenation of country,
-                              points: best placement of country
+                              best: best placement of country
                          Returns:
                               bool: true/false whether importing was successfull
         """
@@ -2052,6 +2052,27 @@ class Database:
             with self._getConnection() as dbConn:
                 with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
                     cursor.execute(sql, {"code": countryCode})
+
+        except psycopg2.DatabaseError as error:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            self.logger.error(error)
+
+
+    def saveFundingSource(self, countryCode, foundingSource):
+
+        countryId = self.countryCodeToID(countryCode)
+
+        sql_delete_old = "delete from url where country_id = %(countryId)s"
+
+        sql = "insert into url values (%(countryId)s, null, %(foundingSource)s)"
+
+        try:
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql_delete_old, {"countryId": countryId})
+                    cursor.execute(sql, {"countryId":countryId, "foundingSource":foundingSource})
+                dbConn.commit()
 
         except psycopg2.DatabaseError as error:
             if "dbConn" in locals():

@@ -13,8 +13,14 @@ export interface ApiUploadFiles {
 	bgsFile?: File,
 	interconnectednessType?: number,
 	countryCode?: string,
-	currency?: string
+	currency?: string,
+	fundingSource?: string, successSource?: string,
+	interconnSource?: string,
+	bgsSource?: string
 }
+
+
+
 
 export const apiUploadFiles = ({
 	fundingFile,
@@ -23,15 +29,20 @@ export const apiUploadFiles = ({
 	bgsFile,
 	interconnectednessType,
 	countryCode,
-	currency
-}: ApiUploadFiles): Promise<AxiosResponse<{}>> => {
+	currency,
+	fundingSource,
+	successSource,
+	interconnSource,
+	bgsSource
+	}: ApiUploadFiles): Promise<AxiosResponse<{}>> => {
 	const formData = new FormData();
 	if (fundingFile !== undefined)            formData.append("fundingFile", fundingFile);
 	if (successFile !== undefined)            formData.append("successFile", successFile);
 	if (interconnectednessFile !== undefined) formData.append("interconnectednessFile", interconnectednessFile);
 	if (bgsFile !== undefined)            	  formData.append("bgsFile", bgsFile);
 	formData.append("json", JSON.stringify(
-		{countryCode: countryCode, currency: currency, interconnectednessType: interconnectednessType})
+		{countryCode: countryCode, currency: currency, interconnectednessType: interconnectednessType,
+			fundingSource: fundingSource, successSource: successSource, interconnSource: interconnSource, bgsSource: bgsSource })
 	);
 	return axios.post("/admin/upload", formData);
 }

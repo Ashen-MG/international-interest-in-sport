@@ -25,16 +25,17 @@ export interface ApiUploadFundingProps {
 	csvFile: File,
 	countryCode: string,
 	currency: string,
-	corrections: Correction[]
+	corrections: Correction[],
+	fundingSource: string
 }
 
-export const apiUploadFunding = ({csvFile, countryCode, currency, corrections}: ApiUploadFundingProps): Promise<AxiosResponse<{}>> => {
+export const apiUploadFunding = ({csvFile, countryCode, currency, corrections, fundingSource}: ApiUploadFundingProps): Promise<AxiosResponse<{}>> => {
 	const _corrections: any = {};
 	for (const correction of corrections) {
 		_corrections[correction.row] = correction;
 	}
 	const formData = new FormData();
 	formData.append("csvFile", csvFile);
-	formData.append("json", JSON.stringify({countryCode: countryCode, currency: currency, correction: _corrections}))
+	formData.append("json", JSON.stringify({countryCode: countryCode, currency: currency, correction: _corrections, fundingSource:fundingSource}))
 	return axios.post("/secretary/funding/upload", formData);
 }
