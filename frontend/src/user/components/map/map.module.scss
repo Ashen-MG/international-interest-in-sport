@@ -1,0 +1,16 @@
+.mapCountryInfo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  top: 15px;
+  right: 15px;
+  padding: 5px 5px;
+  color: white;
+  background: rgba(0, 0, 0, .6);
+  list-style: none;
+  width: 160px;
+  min-height: 100px;
+  font-size: .85em;
+  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+}
