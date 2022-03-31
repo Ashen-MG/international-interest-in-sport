@@ -27,7 +27,7 @@ import {HomeUser} from "./user/pages/home/HomeUser";
 import {ToastContainer} from "react-toastify";
 import {UpdateSport} from "./admin/pages/update_sport/UpdateSport";
 import {AddCountry} from "admin/pages/add_country/AddCountry";
-import {UserManagement} from "admin/pages/user_management/UserManagement";
+import {AccountManagement} from "admin/pages/account_management/AccountManagement";
 import {Language} from "./app/string";
 
 const history = createBrowserHistory();
@@ -191,8 +191,8 @@ const AdminRoutes = () => {
 			icon: ImageAlt
 		},
 		{
-			route: `${url}/user-management/add`,
-			name: "User Management",
+			route: `${url}/account-management/add`,
+			name: "Account Management",
 			icon: PersonCircle
 		}
 
@@ -220,7 +220,7 @@ const AdminRoutes = () => {
 							<AdminAuthRoute exact path={`${path}/sports/list`} component={SportsWithBranches} />
 							<AdminAuthRoute exact path={`${path}/countries/list`} component={Countries} />
 							<AdminAuthRoute exact path={`${path}/countries/add`} component={AddCountry} />
-							<AdminAuthRoute exact path={`${path}/user-management/add`} component={UserManagement} />
+							<AdminAuthRoute exact path={`${path}/account-management/add`} component={AccountManagement} />
 							<Route exact path={`${path}/logout`}>
 								<Logout userType="admin" />
 							</Route>
