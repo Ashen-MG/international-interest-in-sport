@@ -2168,3 +2168,41 @@ class Database:
                 self._releaseConnection(dbConn)
             self.logger.error(error)
             return False
+
+
+    def addSecretary(self, email, hashedPass):
+
+        sql = "insert into users(email, password, type) values (%(email)s, %(hashedPass)s, %(type)s)"
+
+        try:
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"email": email, "hashedPass": hashedPass, "type" : "secretary"})
+                dbConn.commit()
+
+        except psycopg2.DatabaseError as error:
+            self.logger.error(error)
+
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+
+
+    def addAdmin(self, email, hashedPass):
+
+        sql = "insert into users(email, password, type) values (%(email)s, %(hashedPass)s, %(type)s)"
+
+        try:
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"email": email, "hashedPass": hashedPass, "type" : "admin"})
+                dbConn.commit()
+
+        except psycopg2.DatabaseError as error:
+            self.logger.error(error)
+
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+
+
