@@ -85,3 +85,5 @@ swagger = Swagger(
         ],
     },
 )
+
+DB.addSecretary("s@sec.retary", "najkrajsia")

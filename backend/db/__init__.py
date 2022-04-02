@@ -9,6 +9,8 @@ from os import system
 from os import environ as env
 from time import time
 
+import helpers
+
 
 class DataError(Exception):
     pass
@@ -2170,9 +2172,11 @@ class Database:
             return False
 
 
-    def addSecretary(self, email, hashedPass):
+    def addSecretary(self, email, password):
 
         sql = "insert into users(email, password, type) values (%(email)s, %(hashedPass)s, %(type)s)"
+
+        hashedPass = helpers.createPassword(password).hex()
 
         try:
             with self._getConnection() as dbConn:
@@ -2188,9 +2192,11 @@ class Database:
                 self._releaseConnection(dbConn)
 
 
-    def addAdmin(self, email, hashedPass):
+    def addAdmin(self, email, password):
 
         sql = "insert into users(email, password, type) values (%(email)s, %(hashedPass)s, %(type)s)"
+
+        hashedPass = helpers.createPassword(password).hex()
 
         try:
             with self._getConnection() as dbConn:
@@ -2200,6 +2206,7 @@ class Database:
 
         except psycopg2.DatabaseError as error:
             self.logger.error(error)
+            print(error)
 
         finally:
             if "dbConn" in locals():
