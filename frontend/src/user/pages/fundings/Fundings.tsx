@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useMutation} from "react-query";
-import {apiFunding} from "../../adapters";
+import {apiFunding, apiSource} from "../../adapters";
 import {Button, Form} from "react-bootstrap";
 import Select from "react-select";
 import {Table} from "../../../components/table/Table";
@@ -16,8 +16,10 @@ export const Fundings = () => {
     const {countries} = useCountries("en");
     const [rowFundings, setRowFunding] = useState<(number | string)[][]>([]);
     const [rowCurrency, setRowCurrency] = useState<(number | string)[][]>([]);
+    const [rowSource, setRowSource] = useState<string>("");
     const [options, setOptions] = useState<{value: string, label: string}[]>([]);
     const [option, setOption] = useState<string[]>(["",""]);
+
     /** useEffect for loading countries */
     useEffect(() => {
         if (countries !== undefined) {
@@ -44,11 +46,32 @@ export const Fundings = () => {
             }
         }
     );
+
+    /** Async query for displaying source data. */
+    const { mutateAsync: asyncSource } = useMutation(["setSource", option],
+        () => apiSource(option[0]),
+        {
+            onSuccess: (response) => {
+                const serverData = response.data.data;
+                setRowSource(serverData);
+                console.log(serverData);
+            },
+            onError: (error) => {
+                console.log(error);
+            }
+        }
+    );
+
+
     /** useEffect for displaying funding data. */
     useEffect(() => {
-        if (option[0].length !== 0)
+        if (option[0].length !== 0) {
             asyncFunding();
+            asyncSource();
+        }
     }, [option]);
+
+
 
     return (
         <>
@@ -77,6 +100,7 @@ export const Fundings = () => {
             <div>
 
                 <h5>Funding is displayed in the local currency: <b>{rowCurrency[0]}</b></h5>
+                <h5>Source of displayed data: <b>{rowSource}</b></h5>
                 <Table columnNames={[{name: "Sport", sortable: true}, {name: "Amount (" + rowCurrency[0] + ")", sortable: false, alignRight: true}]}
                        rows={rowFundings}/>
             </div>

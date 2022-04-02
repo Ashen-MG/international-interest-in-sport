@@ -151,6 +151,27 @@ export const apiFunding = (code: string): Promise<AxiosResponse<ApiListFunding>>
     return axios.get(`/user/${code}/funding`);
 }
 
+//For the sources
+
+
+
+
+export interface ApiListSource {
+    message: string,
+    data: string
+}
+
+export const apiListSource = ()
+    : Promise<AxiosResponse<ApiListSource>> =>
+{
+    return axios.get("/user/source");
+
+}
+
+export const apiSource = (code: string): Promise<AxiosResponse<ApiListSource>> => {
+    return axios.get(`/user/${code}/source`);
+}
+
 //For the sports
 
 export type sportType = {

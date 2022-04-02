@@ -2108,6 +2108,37 @@ class Database:
                 self._releaseConnection(dbConn)
             self.logger.error(error)
 
+
+    def getFundingSourceByCountry(self, country_code: str) -> str:
+        """ Get funding source for country
+        Args:
+            country_code (str): str of selected country
+        Returns:
+            string: funding source for selected country
+        """
+
+        sql = "select url from URL where country_id = (select id from country where code = %(country_code)s )"
+        try:
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"country_code": country_code})
+                    tmp = cursor.fetchone()
+
+
+        except psycopg2.DatabaseError as error:
+            # print(error)
+            self.logger.error(error)
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            if tmp is None:
+                return "no source"
+            else:
+                return tmp[0]
+
+
+
+
     def getNonFundingSource(self, type: str) -> str:
         """ Get non funding source
         Args:
