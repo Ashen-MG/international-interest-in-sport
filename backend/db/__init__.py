@@ -2179,6 +2179,7 @@ class Database:
         hashedPass = helpers.createPassword(password).hex()
 
         try:
+            ok = True
             with self._getConnection() as dbConn:
                 with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
                     cursor.execute(sql, {"email": email, "hashedPass": hashedPass, "type" : "secretary"})
@@ -2186,10 +2187,12 @@ class Database:
 
         except psycopg2.DatabaseError as error:
             self.logger.error(error)
+            ok = False
 
         finally:
             if "dbConn" in locals():
                 self._releaseConnection(dbConn)
+            return ok
 
 
     def addAdmin(self, email, password):
@@ -2199,6 +2202,7 @@ class Database:
         hashedPass = helpers.createPassword(password).hex()
 
         try:
+            ok = True
             with self._getConnection() as dbConn:
                 with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
                     cursor.execute(sql, {"email": email, "hashedPass": hashedPass, "type" : "admin"})
@@ -2206,10 +2210,11 @@ class Database:
 
         except psycopg2.DatabaseError as error:
             self.logger.error(error)
-            print(error)
+            ok = False
 
         finally:
             if "dbConn" in locals():
                 self._releaseConnection(dbConn)
+            return ok
 
 

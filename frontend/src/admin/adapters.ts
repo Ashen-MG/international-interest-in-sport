@@ -66,3 +66,13 @@ export interface apiUpdateSportProps {
 export const apiUpdateSport = ({oldCode, newCode, newTitle}: apiUpdateSportProps): Promise<AxiosResponse<{}>> => {
 	return axios.put("/admin/sports/update", {oldCode: oldCode, newCode: newCode, newTitle: newTitle});
 }
+
+export interface ApiAddNewUserProps {
+	email: string,
+	password: string,
+	type: string
+}
+
+export const ApiAddNewUser = ({email, password, type}: ApiAddNewUserProps): Promise<AxiosResponse<{}>> => {
+	return axios.post("/admin/add_user/add", {email: email, password: password, type: type});
+}

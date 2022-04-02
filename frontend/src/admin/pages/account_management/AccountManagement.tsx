@@ -3,7 +3,7 @@ import {Dropzone, dropzoneFileProp} from "components/drag_and_drop/Dropzone";
 import React, {useEffect, useState} from "react";
 import createSnackbar, {SnackTypes} from "../../../components/snackbar/Snackbar";
 import {useCountries, useMutationWithNotifications} from "../../../app/hooks";
-import {apiAddNewCountry, apiUploadFiles} from "../../adapters";
+import {apiAddNewCountry, ApiAddNewUser, apiUploadFiles} from "../../adapters";
 import {currencies} from "../../../data/active_currency_codes";
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import Select from "react-select";
@@ -23,17 +23,17 @@ export const AccountManagement = () => {
     const [newUserPassword, setNewUserPassword] = useState<string>("");
     const [newUserType, setNewUserType] = useState<string>("");
 
-    //const addNewCountryMutation = useMutationWithNotifications(
-    //    "adding_new_country", apiAddNewCountry, "Adding new country...", "en"
-    //);
+    const addNewUserMutation = useMutationWithNotifications(
+        "adding_new_user", ApiAddNewUser, "Adding new user...", "en"
+    );
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (newUserEmail.length === 0 || newUserPassword.length === 0 || newUserType.length === 0) {
             createSnackbar("All fields are required.", SnackTypes.warn); return;
         }
-        //addNewCountryMutation.mutate({email: newUserEmail, password: newUserPassword, type: newUserType});
-        console.log({email: newUserEmail, password: newUserPassword, type: newUserType});
+        addNewUserMutation.mutate({email: newUserEmail, password: newUserPassword, type: newUserType});
+        //console.log({email: newUserEmail, password: newUserPassword, type: newUserType});
     }
 
     return(<>
@@ -101,11 +101,6 @@ export const AccountManagement = () => {
                     Add user
                 </Button>
             </Form>
-        </CenteredRow>
-
-        <CenteredRow>
-        <h2>Update user account</h2>
-        <p>TODO</p>
         </CenteredRow>
 
     </>)
