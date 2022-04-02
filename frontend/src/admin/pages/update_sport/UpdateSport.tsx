@@ -36,7 +36,9 @@ export const UpdateSport = () => {
 		if (oldSportCode === undefined || newSportCode.length === 0 || newSportTitle.length === 0) {
 			createSnackbar("All fields are required.", SnackTypes.warn); return;
 		}
-		if (sportCodes.find(c => c.value == newSportCode) !== undefined) {
+		console.log(oldSportCode.value);
+		console.log(newSportCode);
+		if (newSportCode != oldSportCode.value && sportCodes.find(c => c.value == newSportCode) !== undefined) {
 			createSnackbar("New sport code already exists.", SnackTypes.warn); return;
 		}
 		updateSportMutation.mutate({oldCode: oldSportCode.value, newCode: newSportCode, newTitle: newSportTitle});
