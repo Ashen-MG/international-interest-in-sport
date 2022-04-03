@@ -197,7 +197,7 @@ export const UploadData = () => {
 		</section>
 		<section>
 			<CenteredRow as="header">
-				<h2>Upload success data</h2>
+				<h2>Upload sport ranking data</h2>
 				<a href={`${config.API_URL}/static/all_sports_ranking_2019.xlsx`}>download sample file</a>
 			</CenteredRow>
 			<CenteredRow className="mb-4">
@@ -233,7 +233,7 @@ export const UploadData = () => {
 		</section>
 		<section>
 			<CenteredRow as="header">
-				<h2>Upload interconnectedness data</h2>
+				<h2>Upload country influence data</h2>
 				<a href={`${config.API_URL}/static/interconnectedness.xlsx`}>download sample file</a>
 			</CenteredRow>
 			<CenteredRow className="mb-4">
