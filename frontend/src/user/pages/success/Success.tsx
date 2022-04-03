@@ -9,6 +9,7 @@ import {Download} from "react-bootstrap-icons";
 import {Info} from "../../components/info/Info";
 import {ChoiceState} from "../../components/choicestate/ChoiceState";
 import {getCountryImageURL} from "helpers/country-iso-3-to-2";
+import {formatLongNumber} from "../../../helpers/format";
 
 /** This page is used to show the success of individual sports */
 export const Success = () => {
@@ -43,7 +44,7 @@ export const Success = () => {
 			onSuccess: (response) => {
 				const serverData = response.data.data;
 				setRowSuccess(serverData.success.map((s) => [
-					{element: getCountryImageURL(s.country_code, s.country_name), value: ""}, s.country_name, s.points, s.order]
+					{element: getCountryImageURL(s.country_code, s.country_name), value: ""}, s.country_name, formatLongNumber(Math.round(s.points * 100) / 100), s.order]
 				));
 			},
 			onError: (error) => {
@@ -92,7 +93,7 @@ export const Success = () => {
 
 				:
 				<div>
-					<Table columnNames={[{name: "Flag", sortable: false}, {name: "Country", sortable: true}, {name: "Points", sortable: true}, {
+					<Table columnNames={[{name: "Flag", sortable: false}, {name: "Country", sortable: true, alignRight: true}, {name: "Points", sortable: true}, {
 						name: "Order",
 						sortable: true
 					}]}
