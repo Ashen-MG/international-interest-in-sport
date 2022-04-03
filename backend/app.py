@@ -207,6 +207,13 @@ app.add_url_rule(
 	methods=["GET"]
 )
 
+app.add_url_rule(
+	"/api/user/<type>/source2",
+	view_func=user.endpoints.source.ShowNonFundingSourceView.as_view("list_source2"),
+	methods=["GET"]
+)
+
+
 
 app.add_url_rule(
 	"/api/user/<countryCode>/<interconnectednessType>/interconnectedness",

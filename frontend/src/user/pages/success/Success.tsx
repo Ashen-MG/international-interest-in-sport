@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useMutation, useQuery} from "react-query";
-import {apiListSport, apiSuccess, sportType} from "../../adapters";
+import {apiListSport, apiSource, apiSource2, apiSuccess, sportType} from "../../adapters";
 import {Button, Form, Spinner} from "react-bootstrap";
 import Select from "react-select";
 import {Table, TableRowsType} from "components/table/Table";
@@ -15,7 +15,7 @@ export const Success = () => {
 	const [sports, setSport] = useState<sportType[]>();
 	const [rowSuccess, setRowSuccess] = useState<TableRowsType>([]);
 	const [option, setOption] = useState<string[]>(["",""]);
-
+	const [rowSource, setRowSource] = useState<string>("");
 	/** Query for displaying sports. */
 	const {isLoading} = useQuery("list_sports2", apiListSport, {
 		onSuccess: (response) => {
@@ -28,6 +28,20 @@ export const Success = () => {
 		cacheTime:(0)
 	})
 
+	/** Async query for displaying source data. */
+	const { mutateAsync: asyncSource } = useMutation(["setSource", "successSource"],
+		() => apiSource2("successSource"),
+		{
+			onSuccess: (response) => {
+				const serverData = response.data.data;
+				setRowSource(serverData);
+				console.log(serverData);
+			},
+			onError: (error) => {
+				console.log(error);
+			}
+		}
+	);
 
 
 	let options = sports?.map(d => ({
@@ -52,9 +66,10 @@ export const Success = () => {
 		}
 	);
 
-	/** useEffect for displaying success data. */
+	/** useEffect for displaying success and source data. */
 	useEffect(() => {
 		asyncSuccess();
+		asyncSource();
 
 	}, [option]);
 
@@ -62,7 +77,7 @@ export const Success = () => {
 	return (
 		<>
 			<header>
-				<h1 className="mt-3 mb-4"> Success <Info label="What is Success" input="After selecting a sport, this page displays a table showing
+				<h1 className="mt-3 mb-4"> Sport Ranking <Info label="What is Sport Ranking" input="After selecting a sport, this page displays a table showing
             the ranking of countries according to the number of points earned in the sport.
             Source: https://www.worldsportranking.info/sports-list
             "/></h1>
@@ -92,6 +107,7 @@ export const Success = () => {
 
 				:
 				<div>
+					<h5>Source of displayed data: <b>{rowSource}</b></h5>
 					<Table columnNames={[{name: "Flag", sortable: false}, {name: "Country", sortable: true}, {name: "Points", sortable: true}, {
 						name: "Order",
 						sortable: true

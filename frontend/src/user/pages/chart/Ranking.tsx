@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useMutation} from "react-query";
 import {
-	apiChart
+	apiChart, apiSource2
 } from "../../adapters";
 import {Button, Form} from "react-bootstrap";
 import Select from "react-select";
@@ -18,6 +18,7 @@ export const Ranking = () => {
 	const [rowChart, setRowChart] = useState<(number | string)[][]>([]);
 	const [options, setOptions] = useState<{value: string, label: string}[]>([]);
 	const [option, setOption] = useState<string[]>(["",""]);
+	const [rowSource, setRowSource] = useState<string>("");
 	/** useEffect for loading ranking types */
 	useEffect(() => {
 		if (countries !== undefined) {
@@ -43,15 +44,36 @@ export const Ranking = () => {
 			}
 		}
 	);
+
+	/** Async query for displaying source data. */
+	const { mutateAsync: asyncSource } = useMutation(["setSource", "bgsSource"],
+		() => apiSource2("bgsSource"),
+		{
+			onSuccess: (response) => {
+				const serverData = response.data.data;
+				setRowSource(serverData);
+				console.log(serverData);
+			},
+			onError: (error) => {
+				console.log(error);
+			}
+		}
+	);
+
+
+
+
+
 	/** useEffect for displaying interconnectedness data. */
 	useEffect(() => {
 		if (option[0].length !== 0)
 			asyncChart();
+			asyncSource();
 	}, [option]);
 
 	return (
 		<>
-			<h1 className="mt-3 mb-4"> International Importance <Info label="What is Ranking" input="Results are displayed with tree decimal digits, the coefficients are calculated with 10 decimal digits and sorted accordingly. The exact values can be viewed in data export."/></h1>
+			<h1 className="mt-3 mb-4"> International Importance <Info label="What is International Importance" input="Results are displayed with tree decimal digits, the coefficients are calculated with 10 decimal digits and sorted accordingly. The exact values can be viewed in data export."/></h1>
 			<h5>The coefficient measures the interational importance of individual sports for a selected particular country. It sums the estimatd importantce in all included foreign countries for the particular country weighted by their relative country influence.</h5> <br></br>
 			<div>
 				<Form.Label><h4>Country</h4></Form.Label>
@@ -67,6 +89,7 @@ export const Ranking = () => {
 				<Button variant="outline-primary mt-md-2 mb-md-2"><CSVLink className='button' filename={"ranking"+option[1]} data={rowChart}><Download size={25} /> Export data</CSVLink></Button>{' '}
 			</div>
 			<div>
+				<h5>Source of displayed data: <b>{rowSource}</b></h5>
 				<Table columnNames={[{name: "Rank", sortable: true}, {name: "Sport", sortable: true},
 														 {name: "Ranking coefficient", sortable: true}, {name: "Sport Code", sortable: true}
 				]}

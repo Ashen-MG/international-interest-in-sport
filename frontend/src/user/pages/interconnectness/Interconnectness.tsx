@@ -6,7 +6,7 @@ import {Info} from "../../components/info/Info";
 import {useCountries} from "../../../app/hooks";
 import {useInterconnectednessType} from "../../hooks";
 import {useMutation} from "react-query";
-import {apiInterconnectness, interconnectnessType} from "../../adapters";
+import {apiInterconnectness, apiSource2, interconnectnessType} from "../../adapters";
 import {Button, Form} from "react-bootstrap";
 import {ChoiceState} from "../../components/choicestate/ChoiceState";
 import {CSVLink} from "react-csv";
@@ -45,6 +45,7 @@ export const Interconnectness = () => {
 	const [interconnectednessOption, setInterconnectednessOption] = useState<number>(1);
 	const [interconnectnesses, setInterconnectness] = useState<interconnectnessType[]>();
 	const [rowInterconnectness, setRowInterconnectness] = useState<TableRowsType>([]);
+	const [rowSource, setRowSource] = useState<string>("");
   
 	/** useEffect for loading interconnectedness types */
 	useEffect(() => {
@@ -85,10 +86,30 @@ export const Interconnectness = () => {
 			}
 		}
 	);
-	/** useEffect for displaying interconnectedness data. */
+
+	/** Async query for displaying source data. */
+	const { mutateAsync: asyncSource } = useMutation(["setSource", "interconnSource"],
+		() => apiSource2("interconnSource"),
+		{
+			onSuccess: (response) => {
+				const serverData = response.data.data;
+				setRowSource(serverData);
+				console.log(serverData);
+			},
+			onError: (error) => {
+				console.log(error);
+			}
+		}
+	);
+
+
+
+
+	/** useEffect for displaying interconnectedness data and source. */
 	useEffect(() => {
 		if (countryOption[0].length !== 0)
 			asyncInterconnectness();
+			asyncSource();
 	}, [countryOption, interconnectednessOption]);
 
 	return (<>
@@ -143,6 +164,7 @@ export const Interconnectness = () => {
 				</Button>{' '}
 			</div>
 
+			<h5>Source of displayed data: <b>{rowSource}</b></h5>
 			<div className="inter">
 				<Switch>
 					<Route path="/influence/table">

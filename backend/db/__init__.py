@@ -2153,20 +2153,16 @@ class Database:
                 with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
                     cursor.execute(sql, {"type": type})
                     tmp = cursor.fetchone()
-                    if tmp is None:
-                        if "dbConn" in locals():
-                            self._releaseConnection(dbConn)
-                        return -1
-                    else:
-                        if "dbConn" in locals():
-                            self._releaseConnection(dbConn)
-                        return tmp[0]
-
         except psycopg2.DatabaseError as error:
             # print(error)
+            self.logger.error(error)
+        finally:
             if "dbConn" in locals():
                 self._releaseConnection(dbConn)
-            self.logger.error(error)
+            if tmp is None:
+                return "no source"
+            else:
+                return tmp[0]
 
 
     def saveNonFundingSource(self, type: str, url: str) -> bool:

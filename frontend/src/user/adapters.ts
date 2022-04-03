@@ -172,6 +172,9 @@ export const apiSource = (code: string): Promise<AxiosResponse<ApiListSource>> =
     return axios.get(`/user/${code}/source`);
 }
 
+export const apiSource2 = (type: string): Promise<AxiosResponse<ApiListSource>> => {
+    return axios.get(`/user/${type}/source2`);
+}
 //For the sports
 
 export type sportType = {
