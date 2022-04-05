@@ -26,7 +26,12 @@ export const AccountManagement = () => {
     }
 
     const addNewUserMutation = useMutationWithNotifications(
-        "adding_new_user", ApiAddNewUser, "Adding new user...", "en"
+        "adding_new_user", ApiAddNewUser, "Adding new user...", "en",
+      () => {
+            setEmail("");
+            setNewUserPassword("");
+            setNewUserType("");
+      }
     );
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
