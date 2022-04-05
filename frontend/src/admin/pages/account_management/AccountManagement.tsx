@@ -1,16 +1,11 @@
 import {CenteredRow} from "components/basic/CenteredRow";
-import {Dropzone, dropzoneFileProp} from "components/drag_and_drop/Dropzone";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import createSnackbar, {SnackTypes} from "../../../components/snackbar/Snackbar";
-import {useCountries, useMutationWithNotifications} from "../../../app/hooks";
-import {apiAddNewCountry, ApiAddNewUser, apiUploadFiles} from "../../adapters";
-import {currencies} from "../../../data/active_currency_codes";
+import {useMutationWithNotifications} from "../../../app/hooks";
+import {ApiAddNewUser} from "../../adapters";
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
-import Select from "react-select";
-import {useInterconnectednessType} from "../../../user/hooks";
-import {RowToSuggestion, RowWithSuggestion, Suggestions} from "admin_secretary_shared/components/upload_funding_data/Suggestions";
-import config from "../../../config";
-
+import textLang from "../../../app/string";
+import {isEmailValid} from "../../../helpers/validation";
 
 /** Upload funding data.
  *  If there are any mistakes in the uploaded file, errors or suggestions will show up with option to re-upload
@@ -22,6 +17,13 @@ export const AccountManagement = () => {
     const [newUserEmail, setnewUserEmail] = useState<string>("");
     const [newUserPassword, setNewUserPassword] = useState<string>("");
     const [newUserType, setNewUserType] = useState<string>("");
+
+    const [emailValid, setEmailValid] = useState<boolean>(false);
+
+    const setEmail = (email: string) => {
+        setnewUserEmail(email);
+        setEmailValid(isEmailValid(email));
+    }
 
     const addNewUserMutation = useMutationWithNotifications(
         "adding_new_user", ApiAddNewUser, "Adding new user...", "en"
@@ -50,16 +52,23 @@ export const AccountManagement = () => {
                             <Form.Control type="text"
                                           placeholder="User email"
                                           value={newUserEmail}
+                                          isValid={emailValid}
+                                          isInvalid={newUserEmail.length !== 0 && !emailValid}
                                           onChange={(e) =>
-                                              setnewUserEmail((e.currentTarget as HTMLInputElement).value)}
+                                            setEmail((e.currentTarget as HTMLInputElement).value)}
                             />
+                            {!emailValid &&
+                                <Form.Control.Feedback type="invalid">
+                                    {textLang.en.invalidEmail}
+                                </Form.Control.Feedback>
+                            }
                         </FloatingLabel>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-4" controlId="formNewUserPassword">
                     <Col>
                         <FloatingLabel controlId="floatingNewUserPassword" label="New User Password">
-                            <Form.Control type="text"
+                            <Form.Control type="password"
                                           placeholder="New User Password"
                                           value={newUserPassword}
                                           onChange={(e) =>
