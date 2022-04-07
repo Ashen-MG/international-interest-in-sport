@@ -93,7 +93,7 @@ export const Success = () => {
 
 				:
 				<div>
-					<Table columnNames={[{name: "Flag", sortable: false}, {name: "Country", sortable: true, alignRight: true}, {name: "Points", sortable: true}, {
+					<Table columnNames={[{name: "Flag", sortable: false}, {name: "Country", sortable: true}, {name: "Points", sortable: true, alignRight: true}, {
 						name: "Order",
 						sortable: true
 					}]}

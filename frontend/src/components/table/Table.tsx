@@ -119,7 +119,12 @@ const TableBody = ({columnNames, rows}: TableBodyProps) => {
   const [alignRightColumns, setAlignRightColumns] = useState<number[]>([]);
 
   useEffect(() => {
-    setAlignRightColumns(columnNames.filter(c => c.alignRight).map((c, i) => i + 1));
+    const indexes: number[] = [];
+    columnNames.forEach((c, i) => {
+      if (c.alignRight)
+        indexes.push(i);
+    })
+    setAlignRightColumns(indexes);
   }, [columnNames]);
 
   return (
