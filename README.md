@@ -9,7 +9,7 @@
 4. Gunicorn3
 
 ### Database
-New database shuold be created with WIN1252 encoding.
+New database should be created with WIN1252 encoding.
 Migrating to a new server should clone latest stored data from the previous server.
 
 ### Frontend
