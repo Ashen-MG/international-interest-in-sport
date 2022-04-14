@@ -4,9 +4,13 @@
 
 ### Linux server dependencies (recommended)
 1. Python3 (3.7+)
-2. PostgreSQL
+2. PostgreSQL 13
 3. Nginx
 4. Gunicorn3
+
+### Database
+New database shuold be created with WIN1252 encoding.
+Migrating to the new server should clone latest stored data in a previous server.
 
 ### Frontend
 Clone locally the repository and install all dependencies (described in frontend/README.md).<br>
