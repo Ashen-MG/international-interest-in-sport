@@ -10,7 +10,7 @@
 
 ### Database
 New database shuold be created with WIN1252 encoding.
-Migrating to the new server should clone latest stored data in a previous server.
+Migrating to a new server should clone latest stored data from the previous server.
 
 ### Frontend
 Clone locally the repository and install all dependencies (described in frontend/README.md).<br>
