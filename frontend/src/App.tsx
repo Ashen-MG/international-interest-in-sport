@@ -9,7 +9,7 @@ import {setupInterceptors as setupSecretaryInterceptors} from "secretary/axios_p
 import {setupInterceptors as setupAdminInterceptors} from "admin/axios_provider";
 import {setupInterceptors as setupAdminSecretaryInterceptors} from "admin_secretary_shared/axios_provider";
 import {Sidebar, SidebarLinksProp} from "./components/sidebar/Sidebar";
-import {PlusLg, Upload, ImageAlt, Pen, YinYang} from "react-bootstrap-icons";
+import {PlusLg, Upload, ImageAlt, Pen, YinYang, PersonCircle} from "react-bootstrap-icons";
 import globalStyles from "styles/global.module.scss";
 import {Container} from "react-bootstrap";
 import {UploadData} from "./secretary/pages/upload_data/UploadData";
@@ -27,6 +27,7 @@ import {HomeUser} from "./user/pages/home/HomeUser";
 import {ToastContainer} from "react-toastify";
 import {UpdateSport} from "./admin/pages/update_sport/UpdateSport";
 import {AddCountry} from "admin/pages/add_country/AddCountry";
+import {AccountManagement} from "admin/pages/account_management/AccountManagement";
 import {Language} from "./app/string";
 
 const history = createBrowserHistory();
@@ -188,7 +189,13 @@ const AdminRoutes = () => {
 			route: `${url}/countries/list`,
 			name: "Countries",
 			icon: ImageAlt
+		},
+		{
+			route: `${url}/account-management/add`,
+			name: "Account Management",
+			icon: PersonCircle
 		}
+
 	]
 
 	return (
@@ -213,6 +220,7 @@ const AdminRoutes = () => {
 							<AdminAuthRoute exact path={`${path}/sports/list`} component={SportsWithBranches} />
 							<AdminAuthRoute exact path={`${path}/countries/list`} component={Countries} />
 							<AdminAuthRoute exact path={`${path}/countries/add`} component={AddCountry} />
+							<AdminAuthRoute exact path={`${path}/account-management/add`} component={AccountManagement} />
 							<Route exact path={`${path}/logout`}>
 								<Logout userType="admin" />
 							</Route>

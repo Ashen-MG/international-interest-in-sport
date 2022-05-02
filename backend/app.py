@@ -15,6 +15,7 @@ import admin.endpoints.login
 import admin.endpoints.upload
 import admin.endpoints.countries
 import admin.endpoints.sports
+import admin.endpoints.add_user
 import user.endpoints.success
 import user.endpoints.chart
 import user.endpoints.interconnectness
@@ -206,6 +207,11 @@ app.add_url_rule(
 	methods=["GET"]
 )
 
+app.add_url_rule(
+	"/api/admin/add_user/add",
+	view_func=admin.endpoints.add_user.AddUser.as_view("admin_add_user"),
+	methods=["POST"]
+)
 
 
 

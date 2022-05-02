@@ -9,6 +9,8 @@ from os import system
 from os import environ as env
 from time import time
 
+import helpers
+
 
 class DataError(Exception):
     pass
@@ -2168,3 +2170,51 @@ class Database:
                 self._releaseConnection(dbConn)
             self.logger.error(error)
             return False
+
+
+    def addSecretary(self, email, password):
+
+        sql = "insert into users(email, password, type) values (%(email)s, %(hashedPass)s, %(type)s)"
+
+        hashedPass = helpers.createPassword(password).hex()
+
+        try:
+            ok = True
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"email": email, "hashedPass": hashedPass, "type" : "secretary"})
+                dbConn.commit()
+
+        except psycopg2.DatabaseError as error:
+            self.logger.error(error)
+            ok = False
+
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            return ok
+
+
+    def addAdmin(self, email, password):
+
+        sql = "insert into users(email, password, type) values (%(email)s, %(hashedPass)s, %(type)s)"
+
+        hashedPass = helpers.createPassword(password).hex()
+
+        try:
+            ok = True
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"email": email, "hashedPass": hashedPass, "type" : "admin"})
+                dbConn.commit()
+
+        except psycopg2.DatabaseError as error:
+            self.logger.error(error)
+            ok = False
+
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            return ok
+
+
