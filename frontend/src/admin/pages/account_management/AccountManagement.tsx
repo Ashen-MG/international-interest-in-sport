@@ -169,6 +169,19 @@ export const AccountManagement = () => {
                                 acc2@whatever.sk
                             </label>
                         </div>
+                        <div>
+                            <label>
+                                <input
+                                    type = "radio"
+                                    value = "test@test.test"
+                                    checked = {updatedUserEmail === "test@test.test"}
+                                    onChange = {(e) =>
+                                        setUserEmail((e.currentTarget as HTMLInputElement).value)}
+
+                                />
+                                test@test.test
+                            </label>
+                        </div>
 
                     </Col>
                 </Form.Group>

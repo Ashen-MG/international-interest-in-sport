@@ -213,6 +213,11 @@ app.add_url_rule(
 	methods=["POST"]
 )
 
+app.add_url_rule(
+	"/api/admin/add_user/update",
+	view_func=admin.endpoints.add_user.UpdateUser.as_view("admin_update_user"),
+	methods=["POST"]
+)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,6 @@ class AddUser(SwaggerView):
     @is_admin
     @swag_from("post.yml")
     def post(self):
-        print("post request come")
         if not request.json:
             return {"message": "Missing JSON body.", "data": {}}, 400
         if "email" not in request.json:
@@ -24,6 +23,26 @@ class AddUser(SwaggerView):
             ok = DB.addAdmin(request.json["email"], request.json["password"])
         else:
             ok = DB.addSecretary(request.json["email"], request.json["password"])
+
+        if not ok:
+            return {"message": "Database error"}, 500
+
+        return {"message": "ok"}
+
+class UpdateUser(SwaggerView):
+
+    @is_admin
+    @swag_from("post.yml")
+    def post(self):
+        print("post request come")
+        if not request.json:
+            return {"message": "Missing JSON body.", "data": {}}, 400
+        if "email" not in request.json:
+            return {"message": "Missing parameter"}, 400
+        if "password" not in request.json:
+            return {"message": "Missing parameter"}, 400
+
+        ok = DB.updateUser(request.json["email"], request.json["password"])
 
         if not ok:
             return {"message": "Database error"}, 500

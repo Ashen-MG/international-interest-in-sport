@@ -86,4 +86,4 @@ swagger = Swagger(
     },
 )
 
-DB.updateUser("s@a.a", "123")
+# DB.updateUser("s@a.a", "123")
