@@ -169,3 +169,16 @@ export const apiListSport = ()
 
     return axios.get("/user/sports");
 }
+
+// For source
+
+export interface ApiSource {
+    message: string,
+    source: string
+}
+
+export const apiListSource = ()
+    : Promise<AxiosResponse<ApiSource>> =>
+{
+    return axios.get("/user/source");
+}
