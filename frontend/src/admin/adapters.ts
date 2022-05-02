@@ -76,3 +76,23 @@ export interface ApiAddNewUserProps {
 export const ApiAddNewUser = ({email, password, type}: ApiAddNewUserProps): Promise<AxiosResponse<{}>> => {
 	return axios.post("/admin/add_user/add", {email: email, password: password, type: type});
 }
+
+export interface ApiUpdateUserProps {
+	email: string,
+	password: string
+}
+
+export const ApiUpdateUser = ({email, password}: ApiUpdateUserProps): Promise<AxiosResponse<{}>> => {
+	return axios.post("/admin/add_user/update", {email: email, password: password});
+}
+
+
+
+export interface ApiListAccounts {
+	message: string,
+	accounts: string[] // emails
+}
+
+export const apiListAccounts = (): Promise<AxiosResponse<ApiListAccounts>> => {
+	return axios.get("/admin/users/show");
+}

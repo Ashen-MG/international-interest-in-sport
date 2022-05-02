@@ -10,6 +10,7 @@ export interface Country {
 	name: string,
 	code: string
 }
+
 export interface ApiListCountries {
 	message: string,
 	countries: Country[]

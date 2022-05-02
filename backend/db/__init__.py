@@ -2217,4 +2217,48 @@ class Database:
                 self._releaseConnection(dbConn)
             return ok
 
+    def updateUser(self, email, password):
+
+        sql = "update users set password = %(hashedPass)s where email = %(email)s "
+
+        hashedPass = helpers.createPassword(password).hex()
+
+        try:
+            ok = True
+            with self._getConnection() as dbConn:
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql, {"email": email, "hashedPass": hashedPass})
+                dbConn.commit()
+
+        except psycopg2.DatabaseError as error:
+            self.logger.error(error)
+            ok = False
+
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            return ok
+
+    def getUsers(self):
+
+        sql = "select email from users"
+        result = []
+        try:
+            with self._getConnection() as dbConn:
+
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql)
+                    tmp = cursor.fetchone()
+                    while tmp:
+                        result.append(tmp[0])
+                        tmp = cursor.fetchone()
+            # self._releaseConnection(dbConn)
+        except psycopg2.DatabaseError as error:
+            # print(error)
+            self.logger.error(error)
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            print(result)
+            return result
 

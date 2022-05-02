@@ -16,6 +16,7 @@ import admin.endpoints.upload
 import admin.endpoints.countries
 import admin.endpoints.sports
 import admin.endpoints.add_user
+import admin.endpoints.show_user
 import user.endpoints.success
 import user.endpoints.chart
 import user.endpoints.interconnectness
@@ -213,6 +214,17 @@ app.add_url_rule(
 	methods=["POST"]
 )
 
+app.add_url_rule(
+	"/api/admin/add_user/update",
+	view_func=admin.endpoints.add_user.UpdateUser.as_view("admin_update_user"),
+	methods=["POST"]
+)
+
+app.add_url_rule(
+	"/api/admin/users/show",
+	view_func=admin.endpoints.show_user.Accounts.as_view("admin_show_users"),
+	methods=["GET"]
+)
 
 
 if __name__ == "__main__":
