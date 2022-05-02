@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import createSnackbar, {SnackTypes} from "../../../components/snackbar/Snackbar";
 import {useMutationWithNotifications} from "../../../app/hooks";
 import {ApiAddNewUser} from "../../adapters";
+import {ApiUpdateUser} from "../../adapters";
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import textLang from "../../../app/string";
 import {isEmailValid} from "../../../helpers/validation";
@@ -16,7 +17,9 @@ export const AccountManagement = () => {
 
     const [newUserEmail, setnewUserEmail] = useState<string>("");
     const [newUserPassword, setNewUserPassword] = useState<string>("");
+    const [updatedUserPassword, setUpdatedUserPassword] = useState<string>("");
     const [newUserType, setNewUserType] = useState<string>("");
+    const [updatedUserEmail, setUserEmail] = useState<string>("");
 
     const [emailValid, setEmailValid] = useState<boolean>(false);
 
@@ -34,12 +37,29 @@ export const AccountManagement = () => {
       }
     );
 
+    const addUpdatedUserMutation = useMutationWithNotifications(
+        "adding_updated_user", ApiUpdateUser, "Adding updated user...", "en",
+        () => {
+            setUserEmail("");
+            setUpdatedUserPassword("");
+        }
+    );
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (newUserEmail.length === 0 || newUserPassword.length === 0 || newUserType.length === 0) {
             createSnackbar("All fields are required.", SnackTypes.warn); return;
         }
         addNewUserMutation.mutate({email: newUserEmail, password: newUserPassword, type: newUserType});
+        //console.log({email: newUserEmail, password: newUserPassword, type: newUserType});
+    }
+
+    const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (updatedUserPassword.length === 0 || updatedUserEmail.length === 0) {
+            createSnackbar("All fields are required.", SnackTypes.warn); return;
+        }
+        addUpdatedUserMutation.mutate({email: updatedUserEmail, password: updatedUserPassword});
         //console.log({email: newUserEmail, password: newUserPassword, type: newUserType});
     }
 
@@ -113,6 +133,62 @@ export const AccountManagement = () => {
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Add user
+                </Button>
+            </Form>
+        </CenteredRow>
+
+        <CenteredRow as="section" className="mb-3" lg={6} md={7}>
+            <Form onSubmit={handleUpdate}>
+                <h2>Update user account</h2>
+                <h3>Choose user</h3>
+                <Form.Group as={Row} className="mb-4" controlId="formNewUserType">
+                    <Col>
+                        <div>
+                            <label>
+                                <input
+                                    type = "radio"
+                                    value = "acc1@whatever.sk"
+                                    checked = {updatedUserEmail === "acc1@whatever.sk"}
+                                    onChange = {(e) =>
+                                        setUserEmail((e.currentTarget as HTMLInputElement).value)}
+
+                                />
+                                acc1@whatever.sk
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input
+                                    type = "radio"
+                                    value = "acc2@whatever.sk"
+                                    checked = {updatedUserEmail === "acc2@whatever.sk"}
+                                    onChange = {(e) =>
+                                        setUserEmail((e.currentTarget as HTMLInputElement).value)}
+
+                                />
+                                acc2@whatever.sk
+                            </label>
+                        </div>
+
+                    </Col>
+                </Form.Group>
+
+                <h3>Enter new password</h3>
+
+                <Form.Group as={Row} className="mb-4" controlId="formUpdatedUserPassword">
+                    <Col>
+                        <FloatingLabel controlId="floatingUpdatedUserPassword" label="Updated User Password">
+                            <Form.Control type="password"
+                                          placeholder="Updated User Password"
+                                          value={updatedUserPassword}
+                                          onChange={(e) =>
+                                              setUpdatedUserPassword((e.currentTarget as HTMLInputElement).value)}
+                            />
+                        </FloatingLabel>
+                    </Col>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Update user
                 </Button>
             </Form>
         </CenteredRow>
