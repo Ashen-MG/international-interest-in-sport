@@ -2239,3 +2239,26 @@ class Database:
                 self._releaseConnection(dbConn)
             return ok
 
+    def getUsers(self):
+
+        sql = "select email from users"
+        result = []
+        try:
+            with self._getConnection() as dbConn:
+
+                with dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                    cursor.execute(sql)
+                    tmp = cursor.fetchone()
+                    while tmp:
+                        result.append(tmp[0])
+                        tmp = cursor.fetchone()
+            # self._releaseConnection(dbConn)
+        except psycopg2.DatabaseError as error:
+            # print(error)
+            self.logger.error(error)
+        finally:
+            if "dbConn" in locals():
+                self._releaseConnection(dbConn)
+            print(result)
+            return result
+
