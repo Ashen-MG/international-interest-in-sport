@@ -86,4 +86,4 @@ swagger = Swagger(
     },
 )
 
-DB.addSecretary("s@sec.retary", "najkrajsia")
+DB.updateUser("s@a.a", "123")
